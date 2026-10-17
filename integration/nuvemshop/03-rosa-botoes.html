@@ -1,0 +1,102 @@
+<!-- Acrescentar ao final do mesmo bloco, mantendo os códigos anteriores. -->
+<script>
+(function () {
+  var pagina = document.getElementById('ga-nuvemshop-page');
+  if (!pagina) return;
+
+  function aplicarRosa() {
+    var raiz = pagina.shadowRoot;
+    if (!raiz) return;
+    var estilo = raiz.getElementById('ga-rosa-compras');
+    if (!estilo) {
+      estilo = document.createElement('style');
+      estilo.id = 'ga-rosa-compras';
+    }
+    estilo.textContent = `
+      :host {
+        --ink: #4b1f3c;
+        --muted: #725466;
+        color: #4b1f3c !important;
+      }
+      .kit-card.kit-featured {
+        background: #feeeed !important;
+        border-color: #f7adad !important;
+        color: #4b1f3c !important;
+      }
+      .kit-featured .kit-mood { color: #9b334d !important; }
+      .kit-featured .kit-info p,
+      .kit-featured .kit-availability,
+      .kit-featured .kit-price del { color: #725466 !important; }
+      .dialog-art.plum {
+        background: linear-gradient(135deg, #feeeed, #f7adad) !important;
+      }
+      .final-banner {
+        background: linear-gradient(120deg, #f27186, #f7adad) !important;
+        color: #4b1f3c !important;
+      }
+      .final-banner .eyebrow,
+      .final-banner h2 em,
+      .final-banner p,
+      .final-banner .final-small,
+      .final-banner .button-light { color: #4b1f3c !important; }
+      .button-primary,
+      .kit-button {
+        background: #f27186 !important;
+        border: 1px solid #f27186 !important;
+        color: #4b1f3c !important;
+      }
+      .kit-button {
+        border-radius: 8px;
+        padding: 14px 18px !important;
+        min-height: 52px;
+        margin-top: 18px;
+        font-size: 14px !important;
+        font-weight: 600;
+        box-shadow: 0 6px 18px #f2718626;
+        transition: background .2s, box-shadow .2s, transform .2s;
+      }
+      .kit-button:focus-visible {
+        outline: 2px solid #4b1f3c;
+        outline-offset: 4px;
+      }
+      @media (hover:hover) and (pointer:fine) {
+        .kit-button:hover,
+        .button-primary:hover {
+          background: #f58a9c !important;
+          border-color: #f58a9c !important;
+          box-shadow: 0 8px 22px #f2718638;
+        }
+        .kit-button:hover { transform: translateY(-1px); }
+      }
+      @media (prefers-reduced-motion:reduce) {
+        .kit-button { transition:none !important; transform:none !important; }
+      }
+    `;
+    raiz.appendChild(estilo);
+
+    function atualizarTextos() {
+      raiz.querySelectorAll('.kit-button').forEach(function (botao) {
+        botao.childNodes.forEach(function (no) {
+          if (no.nodeType === 3 && no.textContent.trim() === 'Quero este produto') {
+            no.textContent = 'Adquira já o seu ';
+          }
+        });
+        var rotulo = botao.getAttribute('aria-label');
+        if (rotulo && rotulo.indexOf('Quero este produto:') === 0) {
+          botao.setAttribute('aria-label', rotulo.replace('Quero este produto:', 'Adquira já o seu:'));
+        }
+      });
+    }
+    if (raiz.gaRosaObserver) raiz.gaRosaObserver.disconnect();
+    atualizarTextos();
+    raiz.gaRosaObserver = new MutationObserver(atualizarTextos);
+    raiz.gaRosaObserver.observe(raiz, {
+      childList: true, subtree: true, characterData: true,
+      attributes: true, attributeFilter: ['aria-label']
+    });
+  }
+
+  aplicarRosa();
+  pagina.addEventListener('ga:ready', aplicarRosa, { once: true });
+})();
+</script>
