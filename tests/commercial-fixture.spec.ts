@@ -46,6 +46,14 @@ test.beforeAll(async () => {
   content = content.replace(
     "export const faqs = [",
     `
+    kits.splice(3);
+    kits.forEach((kit, i) => {
+      kit.kind = "kit";
+      kit.id = ["glow", "essencial", "premium"][i];
+      kit.image = "/images/" + kit.id + ".svg";
+      kit.name = ["Kit Glow", "Kit Essencial", "Kit Premium"][i];
+      kit.whatsappMessage = "Olá! Tenho interesse no {kit} e gostaria de saber mais sobre ele.";
+    });
     kits[0].price = 150;
     kits[0].promotionalPrice = 120;
     kits[0].availability = "available";
@@ -53,6 +61,7 @@ test.beforeAll(async () => {
     kits[0].includedProducts = [{ name: "Produto de teste", quantity: 2, details: "Conteúdo sintético para validar o componente" }];
     kits[0].highlights = ["Destaque configurado para teste"];
     kits[0].additionalImages = [{ image: "/images/essencial.svg", imageAlt: "Imagem complementar de teste", imageMode: "photo", imageFit: "contain" }];
+    kits[2].whatsappMessage = undefined;
     kits[2].order = 0;
     kits[2].availability = "unavailable";
     kits.push({ ...kits[0], id: "rascunho", name: "Kit não publicado", published: false });

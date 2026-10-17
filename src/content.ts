@@ -1,25 +1,25 @@
 /** Configuração pública: substitua apenas por dados comerciais confirmados. */
-const brandName = "Aura Bloom";
+const brandName = "Grand Amour";
 export const brand = {
   name: brandName,
-  descriptor: "BEAUTY",
-  fullName: `${brandName} Beauty`,
-  signature: "bloom.",
-  tagline: "Seu ritual, sua essência.",
+  descriptor: "BELEZA & COSMÉTICOS",
+  fullName: `${brandName} — Beleza & Cosméticos`,
+  signature: "amour.",
+  tagline: "Beleza real. Cuidado consciente.",
   whatsapp: "", // Somente dígitos, com código do país e DDD.
   email: "",
   instagram: "", // URL HTTPS real; vazio mantém o link oculto.
 };
 /** Desative somente após substituir textos, fotos e informações demonstrativas. */
 export const catalog = {
-  demoMode: true,
+  demoMode: false,
   // {kit} é substituído pelo kit escolhido; {brand} é opcional.
   whatsappMessage:
-    "Olá! Tenho interesse no {kit} e gostaria de saber mais sobre ele.",
+    "Olá! Tenho interesse em {kit} e gostaria de saber mais sobre ele.",
 };
 export const seo = {
   title: `${brand.fullName} — ${brand.tagline}`,
-  description: `Encontre seu momento de autocuidado com a ${brand.fullName}. Explore os kits de cosméticos e descubra um ritual de beleza só seu.`,
+  description: `Encontre seu momento de autocuidado com a ${brand.fullName}. Conheça os cosméticos Grand Amour e descubra um ritual de beleza só seu.`,
   // Preencha após definir o domínio público; vazio não gera URL ou canonical fictícios.
   siteUrl: "",
 };
@@ -39,6 +39,7 @@ export interface IncludedProduct {
 }
 export interface Kit extends ProductImage {
   id: string;
+  kind?: "kit" | "product";
   name: string;
   mood: string;
   description: string;
@@ -62,116 +63,172 @@ export interface Kit extends ProductImage {
 }
 export const visuals: { hero: ProductImage; editorial: ProductImage } = {
   hero: {
-    image: "/images/hero.svg",
-    imageAlt: `Composição ilustrativa ${brand.name}: frasco rosa, bisnaga, sérum e pote sobre um pedestal, com pétalas delicadas`,
-    imageMode: "mockup",
+    image: "/images/grand-amour/serum-editorial.png",
+    imageAlt: "Sérum C+E Grand Amour: frasco âmbar, conta-gotas e embalagem original",
+    imageMode: "photo",
+    imageFit: "contain",
   },
   editorial: {
-    image: "/images/editorial.svg",
-    imageAlt: `Mockup ${brand.name} em uma composição de pétalas, rosa suave e reflexos de luz`,
-    imageMode: "mockup",
+    image: "/images/grand-amour/nutri-skin.png",
+    imageAlt: "Nutri Skin Grand Amour: creme facial e embalagem original de 60 g",
+    imageMode: "photo",
+    imageFit: "contain",
   },
 };
+/** Fotos: extraídas do PDF Grand Amour. Preços: capturas fornecidas pela marca.
+ * Estoque e condições de pagamento não foram confirmados. */
 export const kits: Kit[] = [
-  {
-    id: "glow",
-    name: "Kit Glow",
-    mood: "Um toque de luz",
-    description:
-      "Um convite para deixar o seu momento de beleza ainda mais especial.",
-    image: "/images/glow.svg",
-    imageAlt:
-      "Mockup ilustrativo do Kit Glow: composição demonstrativa de cosméticos",
-    imageMode: "mockup",
-    imageFit: "contain",
-    imagePosition: "center",
-    price: null,
-    promotionalPrice: null,
-    additionalImages: [],
-    includedProducts: [],
-    highlights: [],
-    availability: "on-request",
-    order: 10,
-    published: true,
-    label: "PARA FLORESCER",
-    color: "rose",
-    detail: "Para quem quer trazer uma nova inspiração ao ritual de beleza.",
-  },
-  {
-    id: "essencial",
-    name: "Kit Essencial",
-    mood: "O cuidado de todo dia",
-    description:
-      "Seus favoritos reunidos para transformar a rotina em um pequeno ritual.",
-    image: "/images/essencial.svg",
-    imageAlt:
-      "Mockup ilustrativo do Kit Essencial: composição demonstrativa de cosméticos",
-    imageMode: "mockup",
-    imageFit: "contain",
-    imagePosition: "center",
-    price: null,
-    promotionalPrice: null,
-    additionalImages: [],
-    includedProducts: [],
-    highlights: [],
-    availability: "on-request",
-    order: 20,
-    published: true,
-    label: "SEU NOVO RITUAL",
-    color: "lilac",
-    detail:
-      "Para quem valoriza a praticidade de ter o cuidado reunido em um kit.",
-  },
-  {
-    id: "premium",
-    name: "Kit Premium",
-    mood: "Extraordinário, como você",
-    description:
-      "Uma experiência de autocuidado para viver com tempo, presença e carinho.",
-    image: "/images/premium.svg",
-    imageAlt:
-      "Mockup ilustrativo do Kit Premium: composição demonstrativa de cosméticos",
-    imageMode: "mockup",
-    imageFit: "contain",
-    imagePosition: "center",
-    price: null,
-    promotionalPrice: null,
-    additionalImages: [],
-    includedProducts: [],
-    highlights: [],
-    availability: "on-request",
-    order: 30,
-    published: true,
-    label: "UM MOMENTO ESPECIAL",
-    color: "plum",
-    detail:
-      "Para reservar um momento especial para si ou inspirar um presente.",
-  },
-];
+{
+  "id": "serum-ce",
+  "kind": "product",
+  "name": "Sérum C+E",
+  "mood": "Um toque de luminosidade",
+  "description": "Sérum facial com vitaminas C e E para o seu ritual de cuidado.",
+  "image": "/images/grand-amour/serum-ce.png",
+  "imageAlt": "Sérum C+E Grand Amour, produto e embalagem original, 30 ml",
+  "imageMode": "photo",
+  "imageFit": "contain",
+  "imagePosition": "center",
+  "price": 59.99,
+  "promotionalPrice": null,
+  "additionalImages": [],
+  "includedProducts": [],
+  "highlights": [
+    "30 ml",
+    "Vitamina C + Vitamina E"
+  ],
+  "availability": "on-request",
+  "order": 10,
+  "published": true,
+  "label": "VITAMINAS C + E",
+  "color": "rose",
+  "detail": "Sérum facial com vitaminas C e E para o seu ritual de cuidado."
+},
+{
+  "id": "serum-niacin",
+  "kind": "product",
+  "name": "Sérum Niacin",
+  "mood": "Equilíbrio no seu ritual",
+  "description": "Sérum facial com niacinamida, vitamina E e extrato de salix alba.",
+  "image": "/images/grand-amour/serum-niacin.png",
+  "imageAlt": "Sérum Niacin Grand Amour, produto e embalagem original, 30 ml",
+  "imageMode": "photo",
+  "imageFit": "contain",
+  "imagePosition": "center",
+  "price": 59.99,
+  "promotionalPrice": null,
+  "additionalImages": [],
+  "includedProducts": [],
+  "highlights": [
+    "30 ml",
+    "Niacinamida",
+    "Vitamina E",
+    "Extrato de salix alba"
+  ],
+  "availability": "on-request",
+  "order": 20,
+  "published": true,
+  "label": "NIACINAMIDA",
+  "color": "lilac",
+  "detail": "Sérum facial com niacinamida, vitamina E e extrato de salix alba."
+},
+{
+  "id": "nutri-skin",
+  "kind": "product",
+  "name": "Nutri Skin",
+  "mood": "Uma pausa para hidratar",
+  "description": "Creme facial de hidratação para um momento de cuidado com a pele.",
+  "image": "/images/grand-amour/nutri-skin.png",
+  "imageAlt": "Nutri Skin Grand Amour, produto e embalagem original, 60 g",
+  "imageMode": "photo",
+  "imageFit": "contain",
+  "imagePosition": "center",
+  "price": 74.99,
+  "promotionalPrice": null,
+  "additionalImages": [],
+  "includedProducts": [],
+  "highlights": [
+    "60 g"
+  ],
+  "availability": "on-request",
+  "order": 30,
+  "published": true,
+  "label": "HIDRATAÇÃO",
+  "color": "plum",
+  "detail": "Creme facial de hidratação para um momento de cuidado com a pele."
+},
+{
+  "id": "puri-derma",
+  "kind": "product",
+  "name": "Puri Derma",
+  "mood": "O começo do cuidado",
+  "description": "Sabonete de limpeza facial para a primeira etapa do seu ritual.",
+  "image": "/images/grand-amour/puri-derma.png",
+  "imageAlt": "Puri Derma Grand Amour, produto e embalagem original, 120 ml",
+  "imageMode": "photo",
+  "imageFit": "contain",
+  "imagePosition": "center",
+  "price": 72.99,
+  "promotionalPrice": null,
+  "additionalImages": [],
+  "includedProducts": [],
+  "highlights": [
+    "120 ml",
+    "Pantenol",
+    "Algas e chá verde"
+  ],
+  "availability": "on-request",
+  "order": 40,
+  "published": true,
+  "label": "LIMPEZA FACIAL",
+  "color": "rose",
+  "detail": "Sabonete de limpeza facial para a primeira etapa do seu ritual."
+},
+{
+  "id": "hidra-derm",
+  "kind": "product",
+  "name": "Hidra Derm",
+  "mood": "Frescor em cada pausa",
+  "description": "Bruma facial hidratante para refrescar e complementar seu cuidado.",
+  "image": "/images/grand-amour/hidra-derm.png",
+  "imageAlt": "Hidra Derm Grand Amour, produto e embalagem original, 100 ml",
+  "imageMode": "photo",
+  "imageFit": "contain",
+  "imagePosition": "center",
+  "price": 59.99,
+  "promotionalPrice": null,
+  "additionalImages": [],
+  "includedProducts": [],
+  "highlights": [
+    "100 ml"
+  ],
+  "availability": "on-request",
+  "order": 50,
+  "published": true,
+  "label": "BRUMA HIDRATANTE",
+  "color": "lilac",
+  "detail": "Bruma facial hidratante para refrescar e complementar seu cuidado."
+},
+ ];
 export const faqs = [
   {
-    question: "Como encontro o kit ideal para mim?",
-    answer:
-      "Comece pelo momento que você deseja criar: uma pausa para florescer com o Glow, um cuidado para a rotina com o Essencial ou uma experiência especial com o Premium. Selecione um kit para guardar sua escolha e preparar suas perguntas.",
+    question: "Como encontro o produto ideal para mim?",
+    answer: "Conheça a função de cada produto e consulte a marca sobre a escolha mais adequada à sua rotina. Para necessidades específicas da pele, procure orientação de um dermatologista.",
   },
   {
-    question: "O que vem em cada kit?",
-    answer:
-      "Os kits e as imagens desta vitrine são demonstrativos. A composição, os tamanhos, os ingredientes e a disponibilidade precisam ser confirmados com a marca antes de qualquer compra.",
+    question: "Quais produtos fazem parte da linha?",
+    answer: "A linha apresentada reúne Sérum C+E, Sérum Niacin, Nutri Skin, Puri Derma e Hidra Derm. Abra cada produto para consultar sua apresentação e registrar seu interesse.",
   },
   {
-    question: "Posso escolher um kit para presentear?",
-    answer:
-      "Sim, você pode explorar as sugestões pensando em alguém especial. Confirme com a marca a composição disponível e as opções de apresentação antes de comprar.",
+    question: "As fotos são dos produtos Grand Amour?",
+    answer: "Sim. As imagens foram extraídas do material de apresentação da marca e preservam as embalagens originais. Consulte a marca para confirmar a apresentação disponível no momento da compra.",
   },
   {
     question: "Como faço para comprar ou saber mais?",
-    answer:
-      "Clique em “Quero este Kit” para selecionar seu favorito. Você poderá copiar ou baixar um resumo com suas perguntas. Quando o canal de atendimento da marca estiver disponível, ele aparecerá nessa etapa. Nenhum pedido ou pagamento é realizado nesta página.",
+    answer: "Clique em “Quero este produto” para selecionar seu favorito. Enquanto o WhatsApp não estiver cadastrado, você pode copiar ou baixar seu interesse. Nenhum pedido ou pagamento é realizado nesta página.",
   },
   {
     question: "Onde consulto entrega e formas de pagamento?",
-    answer:
-      "Essas informações ainda não foram disponibilizadas. Consulte diretamente a marca sobre preço, pagamento, entrega e condições de compra antes de concluir seu pedido.",
+    answer: "Confirme diretamente com a Grand Amour os valores vigentes, a disponibilidade, o pagamento e a entrega. Os preços exibidos são as referências fornecidas pela marca; condições de Pix e parcelamento não estão aplicadas nesta página.",
   },
 ];

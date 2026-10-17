@@ -27,7 +27,7 @@ import { getPublishedKits, photoStyle } from "./utils/commerce";
 const publishedKits = getPublishedKits(kits);
 const navigation = [
   ["#inicio", "Início"],
-  ["#kits", "Nossos Kits"],
+  ["#kits", "Nossa Linha"],
   ["#beneficios", "Benefícios"],
   ["#sobre", "Sobre"],
 ];
@@ -79,7 +79,7 @@ function App() {
         Pular para o conteúdo
       </a>
       <div className="announcement">
-        <span>Um convite para florescer.</span> Conheça seu novo ritual de
+        <span>Beleza real.</span> Conheça seu novo ritual de
         beleza <Sparkles size={12} />
       </div>
       <header className="header">
@@ -108,7 +108,7 @@ function App() {
             ))}
           </nav>
           <a href="#kits" className="button button-header">
-            Conhecer Kits <ArrowUpRight size={16} />
+            Conhecer a Linha <ArrowUpRight size={16} />
           </a>
           <button
             ref={menuButton}
@@ -147,7 +147,7 @@ function App() {
                 transition={{ duration: reduced ? 0 : 0.7 }}
                 className="eyebrow"
               >
-                <span className="little-line" /> BELEZA QUE FLORESCE EM VOCÊ
+                <span className="little-line" /> BELEZA REAL. CUIDADO CONSCIENTE.
               </motion.div>
               <h1>
                 <motion.span
@@ -155,7 +155,7 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reduced ? 0 : 0.7 }}
                 >
-                  Sua beleza merece
+                  Beleza real.
                 </motion.span>
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 15 }}
@@ -165,7 +165,7 @@ function App() {
                     delay: reduced ? 0 : 0.12,
                   }}
                 >
-                  um ritual
+                  Liberdade
                 </motion.span>
                 <motion.em
                   initial={reduced ? false : { opacity: 0, y: 15 }}
@@ -175,16 +175,16 @@ function App() {
                     delay: reduced ? 0 : 0.24,
                   }}
                 >
-                  extraordinário.
+                  de ser.
                 </motion.em>
               </h1>
               <p className="hero-description">
-                Descubra kits de cosméticos pensados para transformar os
-                pequenos momentos de autocuidado em experiências especiais.
+                Cosméticos que respeitam sua pele e sua verdade. Conheça a linha
+                Grand Amour e encontre o seu ritual de autocuidado.
               </p>
               <div className="hero-actions">
                 <a href="#kits" className="button button-primary">
-                  Explorar Nossos Kits <ArrowUpRight size={18} />
+                  Explorar Nossa Linha <ArrowUpRight size={18} />
                 </a>
                 <a href="#sobre" className="text-button">
                   Descubra a Marca <ArrowRight size={17} />
@@ -260,7 +260,7 @@ function App() {
           className="marquee"
           data-paused={motionPaused}
           role="region"
-          aria-label="Seu momento de autocuidado. Beleza em cada detalhe. Kits para se apaixonar. Um carinho para sua rotina."
+          aria-label="Seu momento de autocuidado. Beleza em cada detalhe. Cuidado consciente. Um carinho para sua rotina."
         >
           <div className="marquee-track" aria-hidden="true">
             {[0, 1].map((i) => (
@@ -268,7 +268,7 @@ function App() {
                 {[
                   "Seu momento de autocuidado",
                   "Beleza em cada detalhe",
-                  "Kits para se apaixonar",
+                  "Cuidado consciente",
                   "Um carinho para sua rotina",
                 ].map((text) => (
                   <span key={text}>
@@ -307,7 +307,7 @@ function App() {
               <p>
                 Cada momento pede um cuidado.
                 <br />
-                Descubra o kit que combina com o seu.
+                Conheça os produtos da nossa linha.
               </p>
             </Reveal>
             <div className="collection-rule" aria-hidden="true">
@@ -315,7 +315,7 @@ function App() {
               <span>
                 {publishedKits.length === 3
                   ? "TRÊS FORMAS DE FLORESCER"
-                  : "ENCONTRE SEU MOMENTO"}
+                  : "BELEZA REAL. CUIDADO CONSCIENTE."}
               </span>
               <span>
                 {publishedKits.length
@@ -327,8 +327,8 @@ function App() {
             <p className="collection-note">
               <Sparkles size={13} />{" "}
               {catalog.demoMode
-                ? "Uma prévia do nosso universo. Imagens e kits ilustrativos; composição e disponibilidade a confirmar."
-                : "Consulte a disponibilidade e as condições de compra com a marca."}
+                ? "Uma prévia do nosso universo. Disponibilidade a confirmar."
+                : "Fotos originais Grand Amour. Consulte disponibilidade, valores vigentes e condições com a marca."}
             </p>
           </div>
         </section>
@@ -357,11 +357,11 @@ function App() {
                 {
                   Icon: Layers3,
                   title: "Cuidado que se encontra",
-                  text: "A praticidade de explorar seus favoritos reunidos em uma só escolha.",
+                  text: "Produtos para diferentes etapas do seu ritual, da limpeza à hidratação.",
                 },
                 {
                   Icon: Gift,
-                  title: "Carinho em forma de kit",
+                  title: "Um gesto de amor próprio",
                   text: "Uma ideia delicada para celebrar alguém especial. Inclusive você.",
                 },
               ].map(({ Icon, title, text }, i) => (
@@ -428,13 +428,12 @@ function App() {
                 </em>
               </h2>
               <p>
-                Acreditamos na beleza dos pequenos rituais. Na pausa que acolhe.
-                No cuidado que aproxima você de si mesma.
+                A Grand Amour nasceu do encontro entre amor e liberdade. Amor pela
+                beleza real e liberdade para cada mulher cuidar de si, do seu jeito.
               </p>
               <p>
-                A {brand.name} nasce desse olhar: transformar o autocuidado em
-                um gesto de carinho, com beleza em cada detalhe e espaço para a
-                sua essência florescer.
+                Acreditamos que o autocuidado é um gesto de respeito com quem você é.
+                Nosso cuidado valoriza a verdade da sua pele, com qualidade e transparência.
               </p>
               <a href="#como-escolher" className="text-button">
                 Encontre seu momento <ArrowUpRight size={17} />
@@ -458,7 +457,7 @@ function App() {
             <div className="steps-grid">
               {[
                 {
-                  title: "Explore os kits",
+                  title: "Explore a linha",
                   text: "Passeie pela nossa coleção e descubra diferentes formas de se cuidar.",
                 },
                 {
@@ -533,7 +532,7 @@ function App() {
             </h2>
             <p>Uma pausa. Uma escolha. Um momento inteiramente seu.</p>
             <a href="#kits" className="button button-light">
-              Encontrar Meu Kit <ArrowUpRight size={18} />
+              Encontrar Meu Produto <ArrowUpRight size={18} />
             </a>
             <span className="final-small">
               FLORESÇA NA SUA PRÓPRIA ESSÊNCIA
@@ -556,7 +555,7 @@ function App() {
             </div>
             <div className="footer-nav">
               <span>EXPLORE</span>
-              <a href="#kits">Nossos Kits</a>
+              <a href="#kits">Nossa Linha</a>
               <a href="#beneficios">Benefícios</a>
               <a href="#sobre">Sobre a marca</a>
               <a href="#perguntas">Perguntas frequentes</a>

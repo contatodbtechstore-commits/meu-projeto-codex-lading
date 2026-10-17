@@ -55,13 +55,13 @@ export function buildKitMessage(kit: Kit): string {
   // Mesmo um texto personalizado sem marcador não perde a identificação do kit.
   return template.includes("{kit}")
     ? text
-    : `${text}\nKit selecionado: ${kit.name}.`;
+    : `${text}\n${kit.kind === "product" ? "Produto" : "Kit"} selecionado: ${kit.name}.`;
 }
 
 export function kitAction(kit: Kit): string {
   return kit.availability === "unavailable"
     ? "Consultar disponibilidade"
-    : "Quero este Kit";
+    : kit.kind === "product" ? "Quero este produto" : "Quero este Kit";
 }
 
 export function availabilityLabel(kit: Kit): string {

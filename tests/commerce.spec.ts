@@ -65,8 +65,10 @@ test("catálogo ordena sem mutar os dados e omite itens não publicados", async 
   }));
   const before = input.map((kit) => kit.id);
   expect(getPublishedKits(input).map((kit) => kit.id)).toEqual([
-    "premium",
-    "glow",
+    "nutri-skin",
+    "serum-ce",
+    "puri-derma",
+    "hidra-derm",
   ]);
   expect(input.map((kit) => kit.id)).toEqual(before);
   expect(
@@ -80,23 +82,23 @@ test("mensagem identifica kit, personalização e consulta de indisponíveis", a
   const { kits } = await import("../src/content");
   const { buildKitMessage } = await import("../src/utils/commerce");
   expect(buildKitMessage(kits[0])).toBe(
-    "Olá! Tenho interesse no Kit Glow e gostaria de saber mais sobre ele.",
+    "Olá! Tenho interesse em Sérum C+E e gostaria de saber mais sobre ele.",
   );
   expect(
     buildKitMessage({ ...kits[0], availability: "unavailable" }),
-  ).toContain("consultar a disponibilidade do Kit Glow");
+  ).toContain("consultar a disponibilidade do Sérum C+E");
   expect(
     buildKitMessage({
       ...kits[0],
       whatsappMessage: "Olá, {brand}! Quero conhecer {kit}.",
     }),
-  ).toBe("Olá, Aura Bloom Beauty! Quero conhecer Kit Glow.");
+  ).toBe("Olá, Grand Amour — Beleza & Cosméticos! Quero conhecer Sérum C+E.");
   expect(
     buildKitMessage({
       ...kits[0],
       whatsappMessage: "Gostaria de informações.",
     }),
-  ).toContain("Kit selecionado: Kit Glow");
+  ).toContain("Produto selecionado: Sérum C+E");
 });
 
 test("validação bloqueia dados inconsistentes e diferencia demonstração de publicação", async () => {

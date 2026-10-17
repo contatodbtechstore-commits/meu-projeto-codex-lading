@@ -130,7 +130,7 @@ export function KitDialog({
               <Heart size={14} /> SEU FAVORITO
             </span>
             <h2 id="selection-title">
-              Um momento com o <em>{kit.name}.</em>
+              Seu cuidado com <em>{kit.name}.</em>
             </h2>
             <p>{kit.detail}</p>
             <KitPrice kit={kit} />
@@ -146,7 +146,7 @@ export function KitDialog({
             )}
             {kit.includedProducts.length > 0 && (
               <div className="kit-details">
-                <h3>O que vem no kit</h3>
+                <h3>Itens incluídos</h3>
                 <ul>
                   {kit.includedProducts.map((product, i) => (
                     <li key={i}>
@@ -162,7 +162,7 @@ export function KitDialog({
             )}
             {kit.highlights.length > 0 && (
               <div className="kit-details">
-                <h3>Destaques deste kit</h3>
+                <h3>Destaques</h3>
                 <ul>
                   {kit.highlights.map((highlight, i) => (
                     <li key={i}>{highlight}</li>
@@ -174,9 +174,9 @@ export function KitDialog({
               <strong>Sua escolha começa aqui.</strong>
               <p>
                 {kit.availability === "unavailable"
-                  ? "Este kit está indisponível no momento. Você pode registrar seu interesse e consultar a marca sobre uma possível disponibilidade, sem efetuar um pedido."
+                  ? "Este item está indisponível no momento. Você pode registrar seu interesse e consultar a marca sobre uma possível disponibilidade, sem efetuar um pedido."
                   : whatsapp
-                    ? "Converse com a marca para confirmar todos os detalhes do seu kit."
+                    ? "Converse com a marca para confirmar todos os detalhes da sua escolha."
                     : "O canal de atendimento será disponibilizado em breve. Guarde este resumo para consultar a marca quando estiver disponível."}
               </p>
             </div>
@@ -231,7 +231,7 @@ export function KitDialog({
             </p>
             <p className="fine-print">
               {catalog.demoMode ? "Vitrine demonstrativa. " : ""}Selecionar um
-              kit não efetua uma compra. Composição e condições a confirmar.
+              item não efetua uma compra. Disponibilidade e condições a confirmar.
             </p>
           </div>
         </>
