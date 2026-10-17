@@ -1,0 +1,115 @@
+<script>
+(function () {
+  var pagina = document.getElementById('ga-nuvemshop-page');
+  if (!pagina) return;
+  var produtos = {
+    'serum-ce': ['374843245', 'serum-facial-vitamina-c-e-grand-amour-19jg5'],
+    'serum-niacin': ['353162047', 'serum-facial-de-niacinamida-grand-amour-11qq3'],
+    'nutri-skin': ['351703918', 'creme-facial-de-hidratacao-nutri-skin-grand-amour-1or54'],
+    'puri-derma': ['374843074', 'puri-derma-sabonete-de-limpeza-facial-grand-amour-db2u5'],
+    'hidra-derm': ['351703812', 'bruma-facial-hidra-derm-hidratante-grand-amour-1qgn0']
+  };
+  function iniciar() {
+    var raiz = pagina.shadowRoot;
+    if (!raiz || raiz.querySelector('#ga-acoes-carrinho')) return;
+    var estilo = document.createElement('style');
+    estilo.id = 'ga-acoes-carrinho';
+    estilo.textContent = `
+      :host .button, :host .text-button, :host .kit-button {
+        background: #F27186 !important; color: #4B1F3C !important;
+        border: 1px solid #F27186 !important; border-radius: 8px !important;
+        padding: 14px 20px !important; min-height: 52px !important;
+        display: inline-flex !important; align-items: center !important;
+        justify-content: center !important; gap: 12px !important;
+        box-sizing: border-box !important; text-decoration: none !important;
+        font-weight: 600 !important; line-height: 1.4 !important;
+        max-width: 100% !important;
+      }
+      :host .text-button::after { display: none !important; }
+      :host .kit-info { display: grid !important; grid-template-columns: minmax(0,1fr) 56px !important; column-gap: 10px !important; }
+      :host .kit-info > * { grid-column: 1 / -1; min-width: 0; }
+      :host .kit-info > .kit-button { grid-column: 1 !important; grid-row: 20 !important; width: 100% !important; margin-top: 12px !important; padding: 12px !important; font-size: 14px !important; }
+      :host .ga-cart-add { grid-column: 2 !important; grid-row: 20 !important; width: 56px !important; min-height: 52px !important; margin-top: 12px !important; padding: 8px !important; border: 1px solid #F27186 !important; border-radius: 8px !important; background: #FBE0E6 !important; color: #4B1F3C !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 3px !important; cursor: pointer; }
+      :host .ga-cart-add svg { width: 24px; height: 24px; flex-shrink: 0; }
+      :host .ga-cart-add span { font-size: 18px; font-weight: 600; }
+      :host .ga-cart-add:disabled { opacity: .6; cursor: wait; }
+      :host .ga-cart-status { grid-column: 1 / -1; font-size: 13px; line-height: 1.6; color: #4B1F3C; }
+      :host .ga-cart-status a { color: inherit; text-decoration: underline; font-weight: 600; }
+      :host .ga-cart-status:empty { display: none; }
+      :host .ga-cart-add:focus-visible, :host .button:focus-visible, :host .text-button:focus-visible, :host .kit-button:focus-visible { outline: 2px solid #AE3156 !important; outline-offset: 4px !important; }
+      @media (hover:hover) {
+        :host .button:hover, :host .text-button:hover, :host .kit-button:hover { background: #F58A9C !important; }
+        :host .ga-cart-add:hover { background: #F7CCD7 !important; }
+      }
+      @media(max-width:600px) { :host .button, :host .text-button { padding: 13px 16px !important; font-size: 14px !important; } }
+    `;
+    raiz.appendChild(estilo);
+
+    function montar() {
+      raiz.querySelectorAll('.kit-info[data-ga-product]').forEach(function (item) {
+        var produto = produtos[item.getAttribute('data-ga-product')];
+        if (!produto || !item.querySelector('.kit-button') || item.querySelector('.ga-cart-add')) return;
+        var botao = document.createElement('button');
+        botao.type = 'button';
+        botao.className = 'ga-cart-add';
+        var nome = item.querySelector('h3').textContent.trim();
+        botao.setAttribute('aria-label', 'Adicionar 1 unidade ao carrinho: ' + nome);
+        botao.title = 'Adicionar ao carrinho';
+        botao.innerHTML = '<span aria-hidden="true">+</span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h2l3 12h12l3-9H5"/><path d="M7 15l-1 3h14"/><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg>';
+        var aviso = document.createElement('p');
+        aviso.className = 'ga-cart-status';
+        aviso.setAttribute('role', 'status');
+        item.append(botao, aviso);
+
+        botao.addEventListener('click', async function (evento) {
+          evento.preventDefault();
+          evento.stopPropagation();
+          if (pagina.gaCheckoutPendente || pagina.gaCartPendente) return;
+          var caminho = '/produtos/' + produto[1] + '/';
+          pagina.gaCartPendente = true;
+          pagina.gaCheckoutPendente = true;
+          botao.disabled = true;
+          botao.setAttribute('aria-busy', 'true');
+          aviso.textContent = 'Adicionando…';
+          try {
+            var resposta = await fetch(caminho, { credentials: 'same-origin', cache: 'no-store' });
+            if (!resposta.ok) throw new Error();
+            var doc = new DOMParser().parseFromString(await resposta.text(), 'text/html');
+            var form = doc.querySelector('form#product_form');
+            var acao = form && new URL(form.getAttribute('action') || '', location.href);
+            var comprar = form && form.querySelector('[data-store="product-buy-button"]');
+            if (!form || form.querySelector('select') || acao.origin !== location.origin || acao.pathname !== '/comprar/' || !comprar || comprar.disabled || /esgotado|indisponível|sem estoque/i.test(comprar.value || '')) throw new Error();
+            var dados = new URLSearchParams();
+            new FormData(form).forEach(function (valor, chave) { if (typeof valor === 'string') dados.append(chave, valor); });
+            if (dados.get('add_to_cart') !== produto[0]) throw new Error();
+            dados.set('quantity', '1');
+            dados.delete('go_to_checkout');
+            var adicionar = await fetch('/comprar/', { method: 'POST', credentials: 'same-origin', body: dados });
+            if (!adicionar.ok) throw new Error();
+            aviso.textContent = 'Solicitação enviada. ';
+            var link = document.createElement('a');
+            link.href = '/comprar/';
+            link.textContent = 'Ver carrinho';
+            aviso.appendChild(link);
+          } catch (erro) {
+            aviso.textContent = 'Confira as opções e o estoque. ';
+            var linkProduto = document.createElement('a');
+            linkProduto.href = caminho;
+            linkProduto.textContent = 'Ver produto';
+            aviso.appendChild(linkProduto);
+          } finally {
+            pagina.gaCartPendente = false;
+            pagina.gaCheckoutPendente = false;
+            botao.disabled = false;
+            botao.removeAttribute('aria-busy');
+          }
+        });
+      });
+    }
+    montar();
+    new MutationObserver(montar).observe(raiz, { childList: true, subtree: true });
+  }
+  iniciar();
+  pagina.addEventListener('ga:ready', iniciar, { once: true });
+})();
+</script>
