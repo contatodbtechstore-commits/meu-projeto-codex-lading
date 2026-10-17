@@ -1,0 +1,87 @@
+<!-- Acrescentar ao final. Usa o carrinho e a finalização nativos da Nuvemshop. -->
+<script>
+(function () {
+  var pagina = document.getElementById('ga-nuvemshop-page');
+  if (!pagina) return;
+  var produtos = {
+    'serum-ce': ['374843245', 'serum-facial-vitamina-c-e-grand-amour-19jg5'],
+    'serum-niacin': ['353162047', 'serum-facial-de-niacinamida-grand-amour-11qq3'],
+    'nutri-skin': ['351703918', 'creme-facial-de-hidratacao-nutri-skin-grand-amour-1or54'],
+    'puri-derma': ['374843074', 'puri-derma-sabonete-de-limpeza-facial-grand-amour-db2u5'],
+    'hidra-derm': ['351703812', 'bruma-facial-hidra-derm-hidratante-grand-amour-1qgn0']
+  };
+
+  function ativarCheckout() {
+    var raiz = pagina.shadowRoot;
+    if (!raiz) return;
+    if (raiz.gaCompraDireta) raiz.removeEventListener('click', raiz.gaCompraDireta, true);
+    raiz.querySelectorAll('dialog[open]').forEach(function (janela) { janela.close(); });
+
+    raiz.gaCompraDireta = async function (evento) {
+      var botao = evento.composedPath().find(function (no) {
+        return no instanceof Element && no.matches('.kit-button');
+      });
+      if (!botao) return;
+      var item = botao.closest('[data-ga-product]');
+      var produto = item && produtos[item.getAttribute('data-ga-product')];
+      if (!produto) return;
+      evento.preventDefault();
+      evento.stopImmediatePropagation();
+      if (pagina.gaCheckoutPendente) return;
+
+      var caminho = '/produtos/' + produto[1] + '/';
+      if ((botao.getAttribute('aria-label') || '').indexOf('Consultar disponibilidade') === 0) {
+        window.location.assign(caminho);
+        return;
+      }
+      pagina.gaCheckoutPendente = true;
+      botao.disabled = true;
+      botao.setAttribute('aria-busy', 'true');
+      botao.setAttribute('aria-label', 'Abrindo finalização da compra');
+      var texto = Array.from(botao.childNodes).find(function (no) { return no.nodeType === 3; });
+      if (texto) texto.textContent = 'Abrindo compra… ';
+
+      try {
+        var paginaProduto = await fetch(caminho, { credentials: 'same-origin', cache: 'no-store' });
+        if (!paginaProduto.ok) throw new Error('Produto indisponível');
+        var documento = new DOMParser().parseFromString(await paginaProduto.text(), 'text/html');
+        var original = documento.querySelector('form#product_form');
+        if (!original || original.querySelector('select')) throw new Error('Escolha as opções na loja');
+        var acao = new URL(original.getAttribute('action') || '', location.href);
+        if (acao.origin !== location.origin || acao.pathname !== '/comprar/') throw new Error('Fluxo não reconhecido');
+        var comprar = original.querySelector('[data-store="product-buy-button"]');
+        if (comprar && (comprar.disabled || /esgotado|indisponível|sem estoque/i.test(comprar.value || ''))) throw new Error('Consulte o estoque');
+        var dados = new URLSearchParams();
+        new FormData(original).forEach(function (valor, nome) {
+          if (typeof valor === 'string') dados.append(nome, valor);
+        });
+        if (dados.get('add_to_cart') !== produto[0]) throw new Error('Produto alterado');
+        dados.set('quantity', '1');
+        dados.delete('go_to_checkout');
+        var adicionar = await fetch('/comprar/', {
+          method: 'POST', credentials: 'same-origin', body: dados
+        });
+        if (!adicionar.ok) throw new Error('Não foi possível adicionar');
+        var formulario = document.createElement('form');
+        formulario.method = 'POST';
+        formulario.action = '/comprar/';
+        formulario.target = '_self';
+        formulario.hidden = true;
+        var finalizar = document.createElement('input');
+        finalizar.type = 'hidden';
+        finalizar.name = 'go_to_checkout';
+        finalizar.value = 'Iniciar compra';
+        formulario.appendChild(finalizar);
+        document.body.appendChild(formulario);
+        HTMLFormElement.prototype.submit.call(formulario);
+      } catch (erro) {
+        window.location.assign(caminho);
+      }
+    };
+    raiz.addEventListener('click', raiz.gaCompraDireta, true);
+  }
+
+  ativarCheckout();
+  pagina.addEventListener('ga:ready', ativarCheckout, { once: true });
+})();
+</script>
