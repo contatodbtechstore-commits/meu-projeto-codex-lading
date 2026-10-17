@@ -40,6 +40,9 @@ export interface IncludedProduct {
 export interface Kit extends ProductImage {
   id: string;
   kind?: "kit" | "product";
+  /** Link opcional para compra no catálogo nativo da MKC. */
+  purchaseUrl?: string;
+  priceSource?: "reference" | "store";
   name: string;
   mood: string;
   description: string;

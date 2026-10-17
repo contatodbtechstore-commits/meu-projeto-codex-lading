@@ -24,14 +24,21 @@ import { KitCollection } from "./components/KitCollection";
 import { KitDialog } from "./components/KitDialog";
 import { brand, catalog, faqs, kits, visuals, type Kit } from "./content";
 import { getPublishedKits, photoStyle } from "./utils/commerce";
-const publishedKits = getPublishedKits(kits);
 const navigation = [
   ["#inicio", "Início"],
   ["#kits", "Nossa Linha"],
   ["#beneficios", "Benefícios"],
   ["#sobre", "Sobre"],
 ];
-function App() {
+interface AppProps {
+  scope?: Document | ShadowRoot;
+  products?: Kit[];
+  questions?: typeof faqs;
+  storeHomeUrl?: string;
+}
+function App({ scope = document, products = kits, questions = faqs, storeHomeUrl }: AppProps = {}) {
+  const publishedKits = getPublishedKits(products);
+  const MainTag = scope === document ? "main" : "div";
   const [menuOpen, setMenuOpen] = useState(false);
   const [motionPaused, setMotionPaused] = useState(false);
   const [selected, setSelected] = useState<Kit | null>(null);
@@ -49,11 +56,11 @@ function App() {
       { rootMargin: "-15% 0px -55% 0px" },
     );
     ["inicio", "kits", "beneficios", "sobre"].forEach((id) => {
-      const el = document.getElementById(id);
+      const el = scope.getElementById(id);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [scope]);
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 641px)");
     const closeOnDesktop = () => {
@@ -136,7 +143,7 @@ function App() {
           </nav>
         )}
       </header>
-      <main id="conteudo">
+      <MainTag id="conteudo">
         <section id="inicio" className="hero">
           <div className="hero-glow" aria-hidden="true" />
           <div className="container hero-layout">
@@ -501,7 +508,7 @@ function App() {
               <Bloom className="faq-flower" />
             </Reveal>
             <div className="faq-list">
-              {faqs.map((faq, i) => (
+              {questions.map((faq, i) => (
                 <Reveal key={faq.question} delay={i * 0.04}>
                   <details className="faq-item">
                     <summary>
@@ -539,7 +546,7 @@ function App() {
             </span>
           </Reveal>
         </section>
-      </main>
+      </MainTag>
       <footer className="footer">
         <div className="container">
           <div className="footer-top">
@@ -567,6 +574,9 @@ function App() {
                 <br />
                 feito para o seu momento.
               </p>
+              {storeHomeUrl && (
+                <a href={storeHomeUrl}>Voltar à MKC Magazine <ArrowUpRight size={16} /></a>
+              )}
               {brand.email && (
                 <a href={`mailto:${brand.email}`}>
                   <Mail size={16} /> {brand.email}
@@ -581,7 +591,7 @@ function App() {
                   <Instagram size={16} /> Instagram
                 </a>
               )}
-              {!brand.email && !brand.instagram && (
+              {!storeHomeUrl && !brand.email && !brand.instagram && (
                 <span className="contact-soon">
                   Canais de contato em breve.
                 </span>

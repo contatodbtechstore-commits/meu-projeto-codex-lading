@@ -5,6 +5,7 @@ import {
   buildKitMessage,
   availabilityLabel,
   getWhatsAppUrl,
+  getStoreProductUrl,
   photoStyle,
 } from "../utils/commerce";
 import { KitPrice } from "./KitPrice";
@@ -23,6 +24,7 @@ export function KitDialog({
   const image = images[imageIndex] ?? kit;
   const message = kit ? buildKitMessage(kit) : "";
   const whatsapp = getWhatsAppUrl(brand.whatsapp, message);
+  const purchaseUrl = getStoreProductUrl(kit?.purchaseUrl);
   useEffect(() => {
     setCopied(false);
     setManual(false);
@@ -173,14 +175,20 @@ export function KitDialog({
             <div className="selection-note">
               <strong>Sua escolha começa aqui.</strong>
               <p>
-                {kit.availability === "unavailable"
+                {purchaseUrl
+                  ? "Continue na MKC Magazine para conferir o preço atual, escolher as opções disponíveis e comprar com o checkout da loja."
+                  : kit.availability === "unavailable"
                   ? "Este item está indisponível no momento. Você pode registrar seu interesse e consultar a marca sobre uma possível disponibilidade, sem efetuar um pedido."
                   : whatsapp
                     ? "Converse com a marca para confirmar todos os detalhes da sua escolha."
                     : "O canal de atendimento será disponibilizado em breve. Guarde este resumo para consultar a marca quando estiver disponível."}
               </p>
             </div>
-            {whatsapp ? (
+            {purchaseUrl ? (
+              <a className="button button-primary" href={purchaseUrl}>
+                {kit.availability === "unavailable" ? "Ver disponibilidade na MKC" : "Comprar na MKC Magazine"} <ArrowUpRight size={18} />
+              </a>
+            ) : whatsapp ? (
               <a
                 className="button button-primary"
                 href={whatsapp}

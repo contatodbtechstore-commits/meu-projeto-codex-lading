@@ -27,3 +27,7 @@ Verificados em 17/10/2026, por título e `WebPage.mainEntity`/oferta estruturada
 A loja e o sitemap passaram a responder neste ambiente. A limitação de rede documentada no levantamento antigo de `catalogo-mkc/` não impediu estas consultas. Não houve levantamento completo de todo o catálogo nem alteração de estoque ou produtos.
 
 Próxima informação necessária: opções de edição do Ipanema em Loja online → Layout, preferencialmente uma captura do painel. Depois preparar a página exclusiva Grand Amour sem afetar a loja em produção.
+
+## Atualização — modelo e integração preparados
+
+A usuária criou a página Grand Amour e vinculou seu modelo exclusivo. Capturas confirmam suporte a HTML, CSS e JavaScript em Personalizada → Código. A regra de ocultação local do cabeçalho já funcionou na prévia da usuária. Não é necessário solicitar FTP para o pacote preparado. A integração está em `integration/nuvemshop/`, com build separado e instalação por um único bloco. Ver o README dessa pasta para escopo, fontes, consulta de preço/estoque, testes e limites. Ainda não instalada/publicada no administrador pela equipe; aguarda colagem do bloco pela usuária e validação real.

@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "playwright test",
-    "check:release": "tsc -b && vite build --mode release"
+    "check:release": "tsc -b && vite build --mode release",
+    "build:nuvemshop": "tsc -b && vite build --config vite.nuvemshop.config.ts && node scripts/package-nuvemshop.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.8",

@@ -65,6 +65,12 @@ export function kitAction(kit: Kit): string {
 }
 
 export function availabilityLabel(kit: Kit): string {
+  if (getStoreProductUrl(kit.purchaseUrl)) {
+    if (kit.priceSource === "store") return kit.availability === "unavailable"
+      ? "Indisponível na loja. Consulte a reposição."
+      : "Preço consultado na loja. Confirme as condições ao comprar.";
+    return "Preço de referência. Consulte preço e estoque na loja.";
+  }
   return {
     available: "Disponível",
     "on-request": "Disponibilidade a confirmar",
@@ -77,4 +83,16 @@ export function getPublishedKits(items: readonly Kit[]): Kit[] {
     .filter((kit) => kit.published)
     .slice()
     .sort((a, b) => a.order - b.order);
+}
+
+/** Somente páginas públicas de produto da loja, sem credenciais ou destinos externos. */
+export function getStoreProductUrl(value?: string): string | null {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" &&
+      ["mkcmagazine.com", "www.mkcmagazine.com"].includes(url.hostname) &&
+      url.pathname.startsWith("/produtos/") && !url.username && !url.password &&
+      !url.port ? url.href : null;
+  } catch { return null; }
 }

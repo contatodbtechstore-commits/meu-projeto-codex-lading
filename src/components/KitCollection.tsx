@@ -57,7 +57,7 @@ export function KitCollection({
                     loading="lazy"
                   />
                 </div>
-                <div className="kit-info">
+                <div className="kit-info" data-ga-product={kit.id}>
                   <span className="kit-mood">{kit.mood}</span>
                   <h3>
                     {kit.name}

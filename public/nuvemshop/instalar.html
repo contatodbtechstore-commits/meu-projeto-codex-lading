@@ -1,0 +1,62 @@
+<!-- Grand Amour ga-nuvemshop-v1.0.0 — substitua todo o bloco de preparação por este código. -->
+<style>
+body:has(#ga-nuvemshop-page)>header.js-header,
+body:has(#ga-nuvemshop-page) #MainContent>#ns-section-heading,
+body:has(#ga-nuvemshop-page) #MainContent>#ns-section-page_content:not(:has(#ga-nuvemshop-page)) {
+  display:none!important;
+}
+body:has(#ga-nuvemshop-page) #MainContent {
+  padding:0!important;margin:0!important;max-width:none!important;width:100%!important;
+}
+body:has(#ga-nuvemshop-page) #MainContent .container:has(#ga-nuvemshop-page),
+body:has(#ga-nuvemshop-page) #MainContent .ns-section:has(#ga-nuvemshop-page) {
+  padding:0!important;margin:0!important;max-width:none!important;width:100%!important;
+}
+body:has(#ga-nuvemshop-page[data-ga-ready])>footer#ns-section-footer {display:none!important}
+html:has(#ga-nuvemshop-page) {scroll-padding-top:104px}
+html:has(#ga-nuvemshop-page[data-ga-dialog-open]) {overflow:hidden!important}
+#ga-nuvemshop-page {display:block!important;width:100%;min-width:0;margin:0;padding:0}
+#ga-nuvemshop-page>.ga-loading {padding:32px 24px;color:#492c37;background:#fff8f7;font:16px/1.7 sans-serif}
+#ga-nuvemshop-page>.ga-loading a {color:#9b334d;text-decoration:underline}
+@media(max-width:640px){html:has(#ga-nuvemshop-page){scroll-padding-top:88px}}
+</style>
+<link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/contatodbtechstore-commits/meu-projeto-codex-lading@ga-nuvemshop-v1.0.0/public/images/grand-amour/serum-editorial.webp" fetchpriority="high">
+<div id="ga-nuvemshop-page" data-ga-version="ga-nuvemshop-v1.0.0">
+  <section class="ga-loading" aria-label="Grand Amour">
+    <h1>Grand Amour</h1>
+    <p data-ga-status role="status">Carregando sua experiência de cuidado…</p>
+    <p>Você também pode conhecer os produtos na MKC Magazine:</p>
+    <ul>
+      <li><a href="https://mkcmagazine.com/produtos/serum-facial-vitamina-c-e-grand-amour-19jg5/">Sérum C+E</a></li>
+      <li><a href="https://mkcmagazine.com/produtos/serum-facial-de-niacinamida-grand-amour-11qq3/">Sérum Niacin</a></li>
+      <li><a href="https://mkcmagazine.com/produtos/creme-facial-de-hidratacao-nutri-skin-grand-amour-1or54/">Nutri Skin</a></li>
+      <li><a href="https://mkcmagazine.com/produtos/puri-derma-sabonete-de-limpeza-facial-grand-amour-db2u5/">Puri Derma</a></li>
+      <li><a href="https://mkcmagazine.com/produtos/bruma-facial-hidra-derm-hidratante-grand-amour-1qgn0/">Hidra Derm</a></li>
+    </ul>
+  </section>
+</div>
+<script>
+(function(){
+  var id='ga-nuvemshop-runtime';
+  var host=document.getElementById('ga-nuvemshop-page');
+  if(!host)return;
+  var fail=function(){
+    var status=host.querySelector('[data-ga-status]');
+    if(status)status.textContent='Não foi possível carregar a apresentação. Os links abaixo continuam disponíveis para comprar na loja.';
+  };
+  host.addEventListener('ga:error',fail,{once:true});
+  var previous=document.getElementById(id);
+  if(previous){
+    if(previous.dataset.gaFailed){previous.remove();}
+    else{window.dispatchEvent(new Event('ga:mount'));return;}
+  }
+  var script=document.createElement('script');
+  script.id=id;
+  script.type='module';
+  script.src='https://cdn.jsdelivr.net/gh/contatodbtechstore-commits/meu-projeto-codex-lading@ga-nuvemshop-v1.0.0/public/nuvemshop/grand-amour.js';
+  script.integrity='sha384-7guoboLDhPR8HXfi3x+wN1huCN6FqgVzkWNe+PP46fN4R3E+casle+XjH+u/Yw0P';
+  script.crossOrigin='anonymous';
+  script.onerror=function(){script.dataset.gaFailed='true';fail();};
+  document.head.appendChild(script);
+})();
+</script>

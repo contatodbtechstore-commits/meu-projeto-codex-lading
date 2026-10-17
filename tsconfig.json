@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "Bundler",
@@ -16,5 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src", "scripts", "vite.config.ts", "playwright.config.ts"]
+  "include": [
+    "src",
+    "scripts",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "vite.nuvemshop.config.ts"
+  ]
 }
