@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Composição ilustrativa de cosméticos Aura Bloom em tons de rosa e lilás">
+<defs>
+<linearGradient id="bottle"><stop stop-color="#a99bc9"/><stop offset=".12" stop-color="#d7c3e9"/><stop offset=".35" stop-color="#eeeaf6"/><stop offset=".7" stop-color="#d7c3e9"/><stop offset="1" stop-color="#a99bc9"/></linearGradient>
+<linearGradient id="glass"><stop stop-color="#f9dde7" stop-opacity=".75"/><stop offset=".18" stop-color="#fff7f7"/><stop offset=".5" stop-color="#edc3d2"/><stop offset=".86" stop-color="#d69fb6"/><stop offset="1" stop-color="#b881a2"/></linearGradient>
+<linearGradient id="lid"><stop stop-color="#d6bbc3"/><stop offset=".15" stop-color="#fff8ef"/><stop offset=".4" stop-color="#e4ced1"/><stop offset=".62" stop-color="#fff7ee"/><stop offset="1" stop-color="#ba92a3"/></linearGradient>
+<linearGradient id="white"><stop stop-color="#dcd0d7"/><stop offset=".18" stop-color="#fffaf9"/><stop offset=".55" stop-color="#fffdf9"/><stop offset="1" stop-color="#d2bccd"/></linearGradient>
+<linearGradient id="plinth" x2="0" y2="1"><stop stop-color="#fff9f8"/><stop offset="1" stop-color="#dbb8cf"/></linearGradient>
+<linearGradient id="petal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4f2"/><stop offset=".5" stop-color="#f2c4d6"/><stop offset="1" stop-color="#c584a8"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#f3e3f4"/><stop offset="1" stop-color="#f3e3f4" stop-opacity="0"/></radialGradient>
+<filter id="shadow" x="-60%" y="-40%" width="220%" height="200%"><feDropShadow dx="12" dy="18" stdDeviation="15" flood-color="#704268" flood-opacity=".19"/></filter>
+<filter id="blur"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<ellipse cx="470" cy="470" rx="405" ry="360" fill="url(#glow)"/>
+<g fill="none" stroke="#fff9fa" opacity=".6"><ellipse cx="465" cy="475" rx="370" ry="345" transform="rotate(-25 465 475)"/><ellipse cx="465" cy="475" rx="388" ry="360" transform="rotate(-25 465 475)"/></g>
+<ellipse cx="466" cy="769" rx="280" ry="45" fill="#82526b" opacity=".14" filter="url(#blur)"/>
+<path d="M190 665a277 63 0 0 1 554 0v67a277 63 0 0 1-554 0Z" fill="url(#plinth)"/>
+<ellipse cx="467" cy="665" rx="277" ry="63" fill="#fff5f3"/>
+<ellipse cx="478" cy="664" rx="219" ry="34" fill="#a97995" opacity=".14" filter="url(#soft)"/>
+<!-- botanical petals, original vector artwork -->
+<g transform="translate(712 568) rotate(-20)">
+<path d="M0 87C-33 13-37-89-4-120 47-86 53 13 0 87" fill="url(#petal)"/>
+<path d="M0 87C-95 38-141-39-108-72-41-62 8 19 0 87" fill="url(#petal)"/>
+<path d="M0 87C34-10 102-55 117-22 120 37 53 88 0 87" fill="url(#petal)"/>
+<path d="M0 87C-60 60-89 78-70 103-36 121-6 106 0 87" fill="url(#petal)"/>
+<path d="M0 87C34 37 90 57 84 80 63 111 16 110 0 87" fill="url(#petal)"/>
+<path d="M0 91C-9 151-34 199-68 226" fill="none" stroke="#ac809b" stroke-width="2"/>
+</g>
+<!-- tall lotion -->
+<g transform="translate(432 210) rotate(9 88 230)" filter="url(#shadow)">
+<rect x="22" y="0" width="132" height="71" rx="8" fill="url(#lid)"/>
+<path d="M22 62h132l19 52v313q0 21-23 24H27q-23-3-23-24V114Z" fill="url(#bottle)"/>
+<path d="M21 119v290" stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-linecap="round"/>
+<path d="M25 71h125" stroke="#fff8ee" stroke-width="2"/>
+<g fill="#5e3657" text-anchor="middle"><text x="88" y="201" font-family="Georgia,serif" font-size="29">aura</text><text x="88" y="231" font-family="Georgia,serif" font-size="29">bloom</text><text x="88" y="252" font-family="Arial,sans-serif" font-size="7" letter-spacing="4">B E A U T Y</text><path d="M70 285h36" stroke="#8c617c"/><text x="88" y="316" font-family="Arial,sans-serif" font-size="8" letter-spacing="2">SEU RITUAL</text><text x="88" y="332" font-family="Arial,sans-serif" font-size="8" letter-spacing="2">SUA ESSÊNCIA</text><text x="88" y="413" font-family="Arial,sans-serif" font-size="7" letter-spacing="2">COLEÇÃO AURA</text></g></g>
+<!-- cream tube -->
+<g transform="translate(253 353) rotate(-9 70 145)" filter="url(#shadow)">
+<path d="M0 0h141l-13 242q-1 13-15 15H28q-14-2-15-15Z" fill="url(#white)"/>
+<path d="M3 8h135" stroke="#d8c4d0" stroke-width="3"/><path d="M7 13h126" stroke="#f2e9ed" stroke-width="2"/>
+<rect x="23" y="252" width="95" height="43" rx="5" fill="url(#lid)"/>
+<g fill="#76506a" text-anchor="middle"><text x="71" y="93" font-family="Georgia,serif" font-size="24">aura</text><text x="71" y="120" font-family="Georgia,serif" font-size="24">bloom</text><text x="71" y="141" font-family="Arial,sans-serif" font-size="6" letter-spacing="3">B E A U T Y</text><text x="71" y="198" font-family="Arial,sans-serif" font-size="7" letter-spacing="2">RITUAL DIÁRIO</text></g></g>
+<!-- fallen petal -->
+<path d="M608 736q32-61 84-35-15 55-84 35" fill="url(#petal)"/>
+<path d="M169 603q-43-34-40-70 48 0 40 70" fill="url(#petal)" opacity=".8"/>
+</svg>
