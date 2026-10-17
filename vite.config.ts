@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
+import { defineConfig, type HtmlTagDescriptor } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { validateContent } from "./scripts/validate-content";
-import { brand, seo } from "./src/content";
+import { brand, seo, visuals } from "./src/content";
 
 function escapeHtml(value: string) {
   const entities: Record<string, string> = {
@@ -26,7 +26,15 @@ export default defineConfig(({ command, mode }) => {
         transformIndexHtml: {
           order: "pre",
           handler(html) {
-            const tags = [];
+            const tags: HtmlTagDescriptor[] = [{
+              tag: "link",
+              attrs: {
+                rel: "preload",
+                as: "image",
+                href: visuals.hero.image,
+                fetchpriority: "high",
+              },
+            }];
             if (seo.siteUrl) {
               const url = new URL(seo.siteUrl);
               if (url.protocol !== "https:" || url.username || url.password)

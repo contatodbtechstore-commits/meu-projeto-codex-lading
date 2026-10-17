@@ -2714,3 +2714,44 @@ h1 em { background-image: linear-gradient(105deg, #ac3653, #865473 85%); }
   display: block; font-family: var(--font-sans); font-size: 6px;
   letter-spacing: 1.1px; text-align: center; line-height: 1.6;
 }
+
+/* Touch comfort without changing the approved desktop composition. */
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+  .hero-actions .button {
+    min-height: 49px;
+    font-size: 12px;
+    padding-inline: 14px;
+    gap: 10px;
+  }
+  .hero-actions .text-button {
+    min-height: 44px;
+    font-size: 11px;
+  }
+  .header-inner > a:first-child,
+  .footer-top > div:first-child > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .scroll-cue {
+    min-height: 44px;
+  }
+  .footer-nav a,
+  .footer-contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .manual-copy textarea {
+    font-size: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .hero-actions .button {
+    width: 100%;
+  }
+}
