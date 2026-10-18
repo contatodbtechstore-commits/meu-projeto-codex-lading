@@ -1,0 +1,415 @@
+<!-- MKC Magazine: página completa de kits. Usar sozinha no modelo exclusivo desta campanha. -->
+<style>
+body:has(#mkc-kits-clean){margin:0}
+body:has(#mkc-kits-clean)>header.js-header,
+body:has(#mkc-kits-clean)>footer#ns-section-footer,
+body:has(#mkc-kits-clean) #MainContent>#ns-section-heading{display:none!important}
+body:has(#mkc-kits-clean) #MainContent,
+body:has(#mkc-kits-clean) #MainContent .container:has(#mkc-kits-clean),
+body:has(#mkc-kits-clean) #MainContent .ns-section:has(#mkc-kits-clean){width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+html:has(#mkc-kits-clean){scroll-padding-top:96px}
+html:has(#mkc-kits-clean dialog[open]){overflow:hidden}
+#mkc-kits-clean{--pink:#c92b68;--ink:#482936;--muted:#795e6a;--blush:#fff4f7;--line:#efdce4;display:block;width:100%;overflow:clip;background:#fffdfd;color:var(--ink);font:400 16px/1.7 Arial,sans-serif;text-align:left;letter-spacing:normal}
+#mkc-kits-clean *{box-sizing:border-box}
+#mkc-kits-clean :where(h1,h2,h3,p,figure,ul,ol){margin:0;padding:0}
+#mkc-kits-clean a{color:inherit;text-decoration:none}
+#mkc-kits-clean button{font:inherit;cursor:pointer}
+#mkc-kits-clean img{display:block;max-width:100%;border:0}
+#mkc-kits-clean :where(a,button,summary,[tabindex]):focus-visible{outline:3px solid #a32958;outline-offset:4px}
+#mkc-kits-clean [hidden]{display:none!important}
+#mkc-kits-clean .m2-wrap{width:min(1180px,calc(100% - 64px));margin-inline:auto}
+#mkc-kits-clean .m2-kicker{display:block;color:#a32958;font-size:11px;font-weight:700;line-height:1.5;letter-spacing:1.7px;text-transform:uppercase}
+#mkc-kits-clean h1,#mkc-kits-clean h2,#mkc-kits-clean h3{color:var(--ink);font-family:Georgia,serif;font-weight:400;text-transform:none;letter-spacing:-1.1px}
+#mkc-kits-clean h2{font-size:clamp(34px,3.8vw,50px);line-height:1.12}
+#mkc-kits-clean em{color:#d52e73;font-family:Georgia,serif;font-weight:400}
+#mkc-kits-clean .m2-btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:52px;padding:14px 24px;border:1px solid var(--pink);border-radius:9px;background:var(--pink);color:#fff;font-size:14px;font-weight:700;line-height:1.5;text-align:center;transition:background .2s,border-color .2s}
+#mkc-kits-clean .m2-btn span{font-size:21px;line-height:1}
+#mkc-kits-clean .m2-link{display:inline-flex;align-items:center;gap:15px;min-height:44px;padding:8px 0;color:#a32958;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+#mkc-kits-clean .m2-top{background:#fbe7ef;padding:9px 16px;text-align:center;color:#852b50;font-size:10px;letter-spacing:1.4px;line-height:1.7}
+#mkc-kits-clean .m2-header{position:sticky;top:0;z-index:30;background:#fffdfdf5;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+#mkc-kits-clean .m2-header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:80px}
+#mkc-kits-clean .m2-logo{width:88px;height:56px;object-fit:contain}
+#mkc-kits-clean .m2-nav{display:flex;align-items:center;gap:28px;font-size:13px}
+#mkc-kits-clean .m2-store{font-size:13px;color:#a32958;font-weight:700;min-height:44px;display:inline-flex;align-items:center;gap:12px}
+#mkc-kits-clean .m2-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:56px;padding-block:64px 52px}
+#mkc-kits-clean .m2-hero h1{font-size:clamp(44px,5.2vw,72px);line-height:1.04;margin:22px 0;letter-spacing:-2px}
+#mkc-kits-clean .m2-hero-copy>p{max-width:420px;color:var(--muted);font-size:17px;line-height:1.85}
+#mkc-kits-clean .m2-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px 24px;margin-top:30px}
+#mkc-kits-clean .m2-hero-visual{overflow:hidden;border-radius:140px 140px 18px 18px;background:#fbe7ef;aspect-ratio:1}
+#mkc-kits-clean .m2-hero-visual img{width:100%;height:100%;object-fit:contain}
+#mkc-kits-clean .m2-caption{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px;text-align:center}
+#mkc-kits-clean .m2-trust{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 42px;border-block:1px solid var(--line);padding:20px 12px;font-size:13px;color:var(--muted);list-style:none}
+#mkc-kits-clean .m2-trust li{display:flex;align-items:center;gap:9px}
+#mkc-kits-clean .m2-trust li::before{content:'✓';color:#a32958;font-weight:700}
+#mkc-kits-clean .m2-section{padding-block:80px;scroll-margin-top:96px}
+#mkc-kits-clean .m2-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:30px}
+#mkc-kits-clean .m2-section-head h2{margin-top:14px}
+#mkc-kits-clean .m2-section-head>p{max-width:330px;color:var(--muted);font-size:15px;line-height:1.85}
+#mkc-kits-clean .m2-feature{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:52px;padding:36px;background:var(--blush);border:1px solid var(--line);border-radius:18px}
+#mkc-kits-clean .m2-photo{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-width:0;aspect-ratio:4/5;background:#fff;border-radius:12px}
+#mkc-kits-clean .m2-photo img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0;padding:14px}
+#mkc-kits-clean .m2-zoom-label{position:absolute;right:12px;bottom:12px;padding:6px 10px;background:#fff8fcf2;border:1px solid var(--line);border-radius:20px;font-size:11px;color:#852b50}
+#mkc-kits-clean .m2-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
+#mkc-kits-clean .m2-thumb{display:block;aspect-ratio:1;border:1px solid var(--line);border-radius:8px;padding:4px;background:#fff;overflow:hidden;min-width:0}
+#mkc-kits-clean .m2-thumb[aria-pressed=true]{border:2px solid var(--pink);padding:3px}
+#mkc-kits-clean .m2-thumb img{width:100%;height:100%;object-fit:contain}
+#mkc-kits-clean .m2-feature-copy{padding:12px 0}
+#mkc-kits-clean .m2-feature h2{margin:16px 0 18px;font-size:clamp(36px,4vw,52px)}
+#mkc-kits-clean .m2-feature-description{color:var(--muted);font-size:16px;line-height:1.85}
+#mkc-kits-clean .m2-benefits{list-style:none;margin:25px 0;display:grid;gap:0}
+#mkc-kits-clean .m2-benefits li{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid #ead3de;font-size:14px}
+#mkc-kits-clean .m2-benefits li::before{content:'✓';color:#a32958;font-size:14px;font-weight:700}
+#mkc-kits-clean .m2-price-label{display:block;font-size:11px;color:var(--muted);margin-top:22px}
+#mkc-kits-clean .m2-feature-price{font-size:38px;font-weight:700;line-height:1.2;letter-spacing:-1px;margin:5px 0 3px}
+#mkc-kits-clean .m2-pix{font-size:15px;color:#a32958;margin-bottom:22px}
+#mkc-kits-clean .m2-feature .m2-btn{width:100%;justify-content:space-between}
+#mkc-kits-clean .m2-note{font-size:11px;line-height:1.8;color:var(--muted);margin-top:13px}
+#mkc-kits-clean .m2-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+#mkc-kits-clean .m2-controls button{display:grid;place-items:center;width:44px;height:44px;border:1px solid #e6c6d3;background:var(--blush);color:#852b50;border-radius:50%;font-size:23px}
+#mkc-kits-clean .m2-controls button:disabled{opacity:.35;cursor:default}
+#mkc-kits-clean .m2-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#e6b8cd transparent;padding:0 0 14px;list-style:none}
+#mkc-kits-clean .m2-card{display:flex;flex-direction:column;flex:0 0 calc((100% - 54px)/4);min-width:0;scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+#mkc-kits-clean .m2-card-image{display:block;height:230px;background:#fff8fa;padding:20px}
+#mkc-kits-clean .m2-card-image img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+#mkc-kits-clean .m2-card-copy{padding:22px 18px;display:flex;flex-direction:column;flex:1}
+#mkc-kits-clean .m2-card h3{font-size:26px;line-height:1.16;letter-spacing:-.6px;margin-bottom:12px}
+#mkc-kits-clean .m2-card-copy>p{color:var(--muted);font-size:13px;line-height:1.8;margin-bottom:22px}
+#mkc-kits-clean .m2-card-price{display:block;font-size:25px;font-weight:700;margin-top:auto;margin-bottom:15px;line-height:1.4}
+#mkc-kits-clean .m2-card .m2-btn{font-size:12px;padding:12px;min-height:48px;justify-content:space-between;gap:8px}
+#mkc-kits-clean .m2-slider-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:12px}
+#mkc-kits-clean .m2-slider-bottom>p{font-size:12px;color:var(--muted)}
+#mkc-kits-clean .m2-dots{display:flex;gap:2px}
+#mkc-kits-clean .m2-dots button{display:grid;place-items:center;width:28px;height:44px;background:none;border:0;padding:0}
+#mkc-kits-clean .m2-dots button::after{content:'';width:6px;height:6px;background:#e0b7c7;border-radius:20px}
+#mkc-kits-clean .m2-dots button[aria-current=true]::after{width:18px;background:var(--pink)}
+#mkc-kits-clean .m2-world{padding-block:76px;background:#fff4f7;border-block:1px solid var(--line)}
+#mkc-kits-clean .m2-world-head{text-align:center;max-width:600px;margin:0 auto 34px}
+#mkc-kits-clean .m2-world-head h2{margin-top:14px}
+#mkc-kits-clean .m2-world-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+#mkc-kits-clean .m2-world-card{min-width:0;overflow:hidden;border-radius:14px;background:#fff}
+#mkc-kits-clean .m2-world-card>img{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+#mkc-kits-clean .m2-world-copy{padding:28px}
+#mkc-kits-clean .m2-world-copy h3{font-size:34px;line-height:1.12;margin:10px 0 14px}
+#mkc-kits-clean .m2-world-copy>p{font-size:14px;line-height:1.85;color:var(--muted);margin-bottom:16px}
+#mkc-kits-clean .m2-world-note{text-align:center;font-size:11px;color:var(--muted);margin:22px auto 0;max-width:600px;line-height:1.8}
+#mkc-kits-clean .m2-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:32px}
+#mkc-kits-clean .m2-steps li{border-top:1px solid #e3bfce;padding-top:20px}
+#mkc-kits-clean .m2-step-number{font:italic 32px/1 Georgia,serif;color:#c92b68}
+#mkc-kits-clean .m2-steps h3{font:700 16px/1.5 Arial,sans-serif;letter-spacing:0;margin:16px 0 9px}
+#mkc-kits-clean .m2-steps p{font-size:14px;color:var(--muted);line-height:1.85}
+#mkc-kits-clean .m2-faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;padding-top:0}
+#mkc-kits-clean .m2-faq-intro h2{margin:16px 0 20px}
+#mkc-kits-clean .m2-faq-intro>p{font-size:15px;line-height:1.8;color:var(--muted)}
+#mkc-kits-clean .m2-questions{border-top:1px solid #e3bfce}
+#mkc-kits-clean details{border-bottom:1px solid #e3bfce;margin:0;padding:0}
+#mkc-kits-clean summary{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:64px;padding:18px 0;color:var(--ink);font-size:15px;font-weight:700;line-height:1.6;list-style:none;cursor:pointer}
+#mkc-kits-clean summary::-webkit-details-marker{display:none}
+#mkc-kits-clean summary::after{content:'+';flex-shrink:0;font-size:24px;font-weight:400;color:#a32958}
+#mkc-kits-clean details[open] summary::after{content:'−'}
+#mkc-kits-clean .m2-answer{font-size:14px;color:var(--muted);line-height:1.85;padding:0 28px 20px 0}
+#mkc-kits-clean .m2-answer a{text-decoration:underline;color:#a32958}
+#mkc-kits-clean .m2-final{display:flex;align-items:center;justify-content:space-between;gap:36px;padding:44px;background:#fbe7ef;border-radius:16px;margin-bottom:72px}
+#mkc-kits-clean .m2-final h2{font-size:clamp(33px,3.4vw,46px);margin:14px 0}
+#mkc-kits-clean .m2-final p{font-size:15px;color:var(--muted);max-width:470px}
+#mkc-kits-clean .m2-final-actions{display:flex;align-items:center;flex-direction:column;gap:8px;flex-shrink:0}
+#mkc-kits-clean .m2-footer{border-top:1px solid var(--line);padding:36px 0 86px;background:#fff}
+#mkc-kits-clean .m2-footer-top{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;margin-bottom:24px}
+#mkc-kits-clean .m2-footer-links{display:flex;gap:10px 24px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+#mkc-kits-clean .m2-footer-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+#mkc-kits-clean .m2-legal{border-top:1px solid var(--line);padding-top:20px;font-size:11px;line-height:1.9;color:var(--muted)}
+#mkc-kits-clean .m2-dialog{width:min(920px,94vw);max-width:94vw;max-height:92vh;max-height:92dvh;border:0;border-radius:14px;background:#fffdfd;color:var(--ink);padding:16px}
+#mkc-kits-clean .m2-dialog::backdrop{background:rgba(45,17,30,.75)}
+#mkc-kits-clean .m2-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px}
+#mkc-kits-clean .m2-dialog-head h2{font:700 15px/1.6 Arial,sans-serif;letter-spacing:0}
+#mkc-kits-clean .m2-close{min-width:44px;min-height:44px;padding:8px 12px;border:1px solid #e6c6d3;border-radius:8px;background:var(--blush);color:#852b50;font-size:14px}
+#mkc-kits-clean .m2-dialog>img{width:100%;height:72vh;height:72dvh;object-fit:contain}
+@media(hover:hover){#mkc-kits-clean .m2-btn:hover{background:#ac2057;border-color:#ac2057}#mkc-kits-clean .m2-link:hover,#mkc-kits-clean .m2-store:hover{color:#702141}#mkc-kits-clean .m2-controls button:not(:disabled):hover{background:#f9dce8}}
+@media(max-width:1000px){#mkc-kits-clean .m2-hero{gap:32px}#mkc-kits-clean .m2-feature{gap:30px;padding:26px}#mkc-kits-clean .m2-card{flex-basis:calc((100% - 18px)/2)}#mkc-kits-clean .m2-faq{gap:36px}#mkc-kits-clean .m2-final{padding:32px}}
+@media(max-width:640px){
+  html:has(#mkc-kits-clean){scroll-padding-top:82px}
+  #mkc-kits-clean .m2-wrap{width:calc(100% - 40px)}
+  #mkc-kits-clean .m2-top{font-size:9px;letter-spacing:1px;padding:8px 12px}
+  #mkc-kits-clean .m2-header-inner{min-height:68px;gap:16px}
+  #mkc-kits-clean .m2-logo{width:74px;height:48px}
+  #mkc-kits-clean .m2-nav{display:none}
+  #mkc-kits-clean .m2-store{font-size:12px}
+  #mkc-kits-clean .m2-hero{grid-template-columns:1fr;gap:30px;padding-block:38px 32px}
+  #mkc-kits-clean .m2-kicker{font-size:10px;letter-spacing:1.4px}
+  #mkc-kits-clean .m2-hero h1{font-size:clamp(42px,12vw,60px);margin:18px 0;letter-spacing:-1.5px}
+  #mkc-kits-clean .m2-hero-copy>p{font-size:16px;line-height:1.8}
+  #mkc-kits-clean .m2-hero-actions{gap:10px 18px;margin-top:24px}
+  #mkc-kits-clean .m2-btn{padding:13px 18px;font-size:13px;min-height:50px;gap:14px}
+  #mkc-kits-clean .m2-link{font-size:13px;gap:10px}
+  #mkc-kits-clean .m2-hero-visual{border-radius:90px 90px 12px 12px}
+  #mkc-kits-clean .m2-hero-visual img{max-height:410px}
+  #mkc-kits-clean .m2-trust{justify-content:flex-start;gap:9px 22px;padding:18px 0;font-size:12px}
+  #mkc-kits-clean .m2-section{padding-block:50px;scroll-margin-top:82px}
+  #mkc-kits-clean .m2-section-head{align-items:flex-end;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+  #mkc-kits-clean h2{font-size:35px}
+  #mkc-kits-clean .m2-section-head>p{font-size:14px;max-width:none}
+  #mkc-kits-clean .m2-feature{grid-template-columns:1fr;gap:22px;padding:18px;border-radius:14px}
+  #mkc-kits-clean .m2-photo{aspect-ratio:1}
+  #mkc-kits-clean .m2-feature-copy{padding:6px 2px}
+  #mkc-kits-clean .m2-feature h2{font-size:38px;margin:14px 0 16px}
+  #mkc-kits-clean .m2-feature-description{font-size:15px}
+  #mkc-kits-clean .m2-benefits{margin-block:20px}
+  #mkc-kits-clean .m2-benefits li{font-size:13px;padding:10px 0}
+  #mkc-kits-clean .m2-feature-price{font-size:35px}
+  #mkc-kits-clean .m2-track{gap:14px}
+  #mkc-kits-clean .m2-card{flex-basis:86%}
+  #mkc-kits-clean .m2-card-image{height:260px}
+  #mkc-kits-clean .m2-card-copy{padding:22px}
+  #mkc-kits-clean .m2-card h3{font-size:28px}
+  #mkc-kits-clean .m2-slider-bottom>p{font-size:11px;max-width:180px}
+  #mkc-kits-clean .m2-dots button{width:23px}
+  #mkc-kits-clean .m2-world{padding-block:48px}
+  #mkc-kits-clean .m2-world-grid{grid-template-columns:1fr;gap:24px}
+  #mkc-kits-clean .m2-world-copy{padding:25px}
+  #mkc-kits-clean .m2-world-copy h3{font-size:32px}
+  #mkc-kits-clean .m2-steps{grid-template-columns:1fr;gap:24px;margin-top:26px}
+  #mkc-kits-clean .m2-steps li{display:grid;grid-template-columns:35px 1fr;gap:0 15px;padding-top:18px}
+  #mkc-kits-clean .m2-step-number{grid-row:1/3;font-size:29px}
+  #mkc-kits-clean .m2-steps h3{margin:0 0 7px}
+  #mkc-kits-clean .m2-faq{grid-template-columns:1fr;gap:26px;padding-top:0}
+  #mkc-kits-clean summary{font-size:14px;min-height:62px}
+  #mkc-kits-clean .m2-final{flex-direction:column;align-items:flex-start;gap:24px;padding:30px 24px;margin-bottom:48px}
+  #mkc-kits-clean .m2-final h2{font-size:34px}
+  #mkc-kits-clean .m2-final-actions{width:100%;align-items:stretch;text-align:center}
+  #mkc-kits-clean .m2-final-actions .m2-link{justify-content:center}
+  #mkc-kits-clean .m2-footer-top{gap:18px;margin-bottom:18px}
+  #mkc-kits-clean .m2-footer-links{gap:4px 20px}
+  #mkc-kits-clean .m2-legal{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){#mkc-kits-clean .m2-btn{transition:none}}
+</style>
+
+<div id="mkc-kits-clean">
+  <div class="m2-top">MKC MAGAZINE · SUA BELEZA, DO SEU JEITO</div>
+  <header class="m2-header">
+    <div class="m2-wrap m2-header-inner">
+      <a href="https://mkcmagazine.com/" aria-label="Ir para a loja MKC Magazine"><img class="m2-logo" src="https://dcdn-us.mitiendanube.com/stores/005/802/149/themes/common/logo-301507828-1747233216-0eacdc1456f7d0d6004ecb135cddae581747233216-320-0.webp" alt="MKC Magazine" width="88" height="56"></a>
+      <nav class="m2-nav" aria-label="Navegação da campanha"><a href="#m2-necessaire">A Necessaire</a><a href="#m2-outros-kits">Outros kits</a><a href="#m2-duvidas">Dúvidas</a></nav>
+      <a class="m2-store" href="https://mkcmagazine.com/">Conheça a loja <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <section class="m2-wrap m2-hero" aria-labelledby="m2-title">
+    <div class="m2-hero-copy">
+      <span class="m2-kicker">Seu momento de beleza</span>
+      <h1 id="m2-title">Beleza que combina<br><em>com você.</em></h1>
+      <p>Maquiagem e cuidados reunidos em kits para acompanhar o seu dia. Escolha o seu próximo favorito.</p>
+      <div class="m2-hero-actions"><a class="m2-btn" href="#m2-necessaire">Conhecer a Necessaire <span aria-hidden="true">↓</span></a><a class="m2-link" href="#m2-outros-kits">Explorar os kits <span aria-hidden="true">→</span></a></div>
+    </div>
+    <figure><div class="m2-hero-visual"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/media/bad01cb2-imagemdochatgpt16deout-de202611_55_52/source.png" alt="Modelo apresentando maquiagem e cuidados da campanha MKC Magazine" fetchpriority="high" decoding="async"></div><figcaption class="m2-caption">Imagem de inspiração da campanha.</figcaption></figure>
+  </section>
+
+  <ul class="m2-wrap m2-trust" aria-label="Sobre a compra"><li>Compra avulsa</li><li>Sem assinatura</li><li>Compra na loja oficial</li></ul>
+
+  <section class="m2-wrap m2-section" id="m2-necessaire" aria-labelledby="m2-feature-title">
+    <div class="m2-feature" data-mkc-product="https://mkcmagazine.com/produtos/kit-necessaire-da-beleza-completa-15-a-20-itens-1rglv/">
+      <div>
+        <a class="m2-photo" data-mkc-zoom href="https://dcdn-us.mitiendanube.com/stores/005/802/149/media/da4f5f5b-foto-11/source.jpg" target="_blank" rel="noopener" aria-label="Ampliar a foto da Necessaire da Beleza"><img id="m2-main-photo" src="https://dcdn-us.mitiendanube.com/stores/005/802/149/media/da4f5f5b-foto-11/source.jpg" alt="Kit Necessaire da Beleza em embalagem transparente com zíper rosa" width="1200" height="1600" loading="lazy" decoding="async"><span class="m2-zoom-label" aria-hidden="true">Ampliar ↗</span></a>
+        <div class="m2-thumbs" aria-label="Fotos reais da Necessaire">
+          <button class="m2-thumb" type="button" data-mkc-photo="0" aria-label="Ver foto 1 da Necessaire" aria-pressed="false" aria-controls="m2-main-photo"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/1-6ad1c9339a59f56ee017920069385478-640-0.webp" alt="" width="160" height="160" loading="lazy"></button>
+          <button class="m2-thumb" type="button" data-mkc-photo="1" aria-label="Ver foto 2 da Necessaire" aria-pressed="false" aria-controls="m2-main-photo"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/2-463dfc4af5956a157e17920069385604-640-0.webp" alt="" width="160" height="160" loading="lazy"></button>
+          <button class="m2-thumb" type="button" data-mkc-photo="2" aria-label="Ver foto 3 da Necessaire" aria-pressed="false" aria-controls="m2-main-photo"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/3-e7c912e477ccc8042617920069385999-640-0.webp" alt="" width="160" height="160" loading="lazy"></button>
+          <button class="m2-thumb" type="button" data-mkc-photo="3" aria-label="Ver foto 4 da Necessaire" aria-pressed="false" aria-controls="m2-main-photo"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/4-6ab32459b7568b3c0e17920069385997-640-0.webp" alt="" width="160" height="160" loading="lazy"></button>
+          <button class="m2-thumb" type="button" data-mkc-photo="4" aria-label="Ver foto 5 da Necessaire" aria-pressed="false" aria-controls="m2-main-photo"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/5-ce89d8fb89e255b21f17920069384673-640-0.webp" alt="" width="160" height="160" loading="lazy"></button>
+        </div>
+        <p class="m2-caption">Fotos do produto. Toque nas miniaturas para ver outros ângulos.</p>
+      </div>
+      <div class="m2-feature-copy">
+        <span class="m2-kicker">O destaque da seleção</span>
+        <h2 id="m2-feature-title">Necessaire<br><em>da Beleza.</em></h2>
+        <p class="m2-feature-description">Uma seleção de maquiagem e cuidados pessoais em uma necessaire transparente com zíper rosa. Para levar seus favoritos e criar novos momentos.</p>
+        <ul class="m2-benefits"><li>Kit anunciado com 15 a 20 itens</li><li>Necessaire transparente com zíper rosa</li><li>Você escolhe quando comprar, sem assinatura</li></ul>
+        <span class="m2-price-label" data-mkc-price-note>Preço de referência</span>
+        <p class="m2-feature-price" data-mkc-price>R$ 89,90</p>
+        <p class="m2-pix" data-mkc-pix>R$ 85,41 com Pix</p>
+        <a class="m2-btn" data-mkc-buy href="https://mkcmagazine.com/produtos/kit-necessaire-da-beleza-completa-15-a-20-itens-1rglv/">Quero minha Necessaire <span aria-hidden="true">↗</span></a>
+        <p class="m2-note">Confira os itens incluídos, as opções disponíveis e as condições de pagamento na página do produto. Frete e prazo são calculados para seu CEP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="m2-wrap m2-section" id="m2-outros-kits" aria-labelledby="m2-kits-title" style="padding-top:0">
+    <div class="m2-section-head"><div><span class="m2-kicker">Mais para descobrir</span><h2 id="m2-kits-title">Mais formas de<br><em>se cuidar.</em></h2></div><p>Combinações de cuidados para encontrar o que faz sentido na sua rotina.</p><div class="m2-controls" aria-label="Controles dos outros kits"><button type="button" data-mkc-prev aria-label="Ver kits anteriores" aria-controls="m2-kit-track" disabled>←</button><button type="button" data-mkc-next aria-label="Ver próximos kits" aria-controls="m2-kit-track">→</button></div></div>
+    <ul class="m2-track" id="m2-kit-track" tabindex="0" aria-label="Seleção de quatro kits, deslize para conhecer">
+      <li class="m2-card" data-mkc-product="https://mkcmagazine.com/produtos/kit-abacaxi-glow-love-1itpm/"><a class="m2-card-image" href="https://mkcmagazine.com/produtos/kit-abacaxi-glow-love-1itpm/" aria-label="Conhecer o Kit Abacaxi Glow Love"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/5b90d5fb77902229b4aa1fc0a4e7f92e-58b9d6ac1de3c7199117914888632810-640-0.webp" alt="Kit Abacaxi Glow Love" width="640" height="640" loading="lazy" decoding="async"></a><div class="m2-card-copy"><h3>Abacaxi<br>Glow Love</h3><p>Bruma fixadora e sérum facial de abacaxi para os seus cuidados.</p><strong class="m2-card-price" data-mkc-price>R$ 44,90</strong><a class="m2-btn" data-mkc-buy href="https://mkcmagazine.com/produtos/kit-abacaxi-glow-love-1itpm/">Conhecer kit <span aria-hidden="true">↗</span></a></div></li>
+      <li class="m2-card" data-mkc-product="https://mkcmagazine.com/produtos/kit-glow-love-roma-max-love-17kjj/"><a class="m2-card-image" href="https://mkcmagazine.com/produtos/kit-glow-love-roma-max-love-17kjj/" aria-label="Conhecer o Kit Glow Love Romã"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/cc2be6fc4cfe45a482ad36474be8068e-960cbeb267547a1b2517914891546623-640-0.webp" alt="Kit Glow Love Romã Max Love" width="640" height="640" loading="lazy" decoding="async"></a><div class="m2-card-copy"><h3>Romã<br>Glow Love</h3><p>Uma seleção da linha Romã para compor seu ritual de cuidados faciais.</p><strong class="m2-card-price" data-mkc-price>R$ 91,99</strong><a class="m2-btn" data-mkc-buy href="https://mkcmagazine.com/produtos/kit-glow-love-roma-max-love-17kjj/">Conhecer kit <span aria-hidden="true">↗</span></a></div></li>
+      <li class="m2-card" data-mkc-product="https://mkcmagazine.com/produtos/kit-bruma-fixadora-hidratante-e-revitalizante-rotina-dia-e-noite-max-love/"><a class="m2-card-image" href="https://mkcmagazine.com/produtos/kit-bruma-fixadora-hidratante-e-revitalizante-rotina-dia-e-noite-max-love/" aria-label="Conhecer o Kit Brumas Hidratante e Revitalizante"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/03b3c1753517cdf5cd8a3169379ddefc-3831f4041f4c68b4f217501850725558-640-0.webp" alt="Kit Brumas Hidratante e Revitalizante Max Love" width="640" height="640" loading="lazy" decoding="async"></a><div class="m2-card-copy"><h3>Brumas<br>Dia e Noite</h3><p>Brumas Hidratante e Revitalizante para acompanhar sua rotina.</p><strong class="m2-card-price" data-mkc-price>R$ 34,99</strong><a class="m2-btn" data-mkc-buy href="https://mkcmagazine.com/produtos/kit-bruma-fixadora-hidratante-e-revitalizante-rotina-dia-e-noite-max-love/">Conhecer kit <span aria-hidden="true">↗</span></a></div></li>
+      <li class="m2-card" data-mkc-product="https://mkcmagazine.com/produtos/kit-para-pele-ressecada-tonico-facial-serum-facial-e-bruma-fixadora-de-abacate/"><a class="m2-card-image" href="https://mkcmagazine.com/produtos/kit-para-pele-ressecada-tonico-facial-serum-facial-e-bruma-fixadora-de-abacate/" aria-label="Conhecer o Kit Abacate para Pele Ressecada"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/products/109733c2be6354fc1a29931075d92a8f-d6c99c54d00068114317552652650492-640-0.webp" alt="Kit Abacate para Pele Ressecada Max Love" width="640" height="640" loading="lazy" decoding="async"></a><div class="m2-card-copy"><h3>Abacate<br>Max Love</h3><p>Tônico facial, sérum facial e bruma fixadora de abacate.</p><strong class="m2-card-price" data-mkc-price>R$ 34,99</strong><a class="m2-btn" data-mkc-buy href="https://mkcmagazine.com/produtos/kit-para-pele-ressecada-tonico-facial-serum-facial-e-bruma-fixadora-de-abacate/">Conhecer kit <span aria-hidden="true">↗</span></a></div></li>
+    </ul>
+    <div class="m2-slider-bottom"><p>Deslize para descobrir seu próximo favorito.</p><div class="m2-dots" aria-label="Posição dos kits"></div></div>
+    <p class="m2-note">Valores de referência. Composição, disponibilidade e condições de compra são confirmadas na página de cada kit.</p>
+  </section>
+
+  <section class="m2-world" aria-labelledby="m2-world-title"><div class="m2-wrap">
+    <div class="m2-world-head"><span class="m2-kicker">Beleza no seu ritmo</span><h2 id="m2-world-title">Muitas formas de<br><em>ser você.</em></h2></div>
+    <div class="m2-world-grid">
+      <article class="m2-world-card"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/media/97b417db-arte-maquiagem-aprovada/source.png" alt="Bruma, batons e glosses em cenário rosa com flores, inspiração de maquiagem" width="900" height="900" loading="lazy" decoding="async"><div class="m2-world-copy"><span class="m2-kicker">Cor, brilho e o seu jeito</span><h3>Seu momento<br><em>de maquiagem.</em></h3><p>Da preparação aos detalhes, um convite para experimentar e expressar seu estilo.</p><a class="m2-link" href="https://mkcmagazine.com/maquiagem/">Explorar maquiagem <span aria-hidden="true">↗</span></a></div></article>
+      <article class="m2-world-card"><img src="https://dcdn-us.mitiendanube.com/stores/005/802/149/media/7ba84c7c-arte-cuidados-aprovada/source.png" alt="Produtos Grand Amour em cenário rosa, inspiração de cuidados com a pele" width="900" height="900" loading="lazy" decoding="async"><div class="m2-world-copy"><span class="m2-kicker">Uma pausa para você</span><h3>Seu ritual<br><em>de cuidados.</em></h3><p>Reserve um momento só seu e descubra a linha Grand Amour na MKC Magazine.</p><a class="m2-link" href="https://mkcmagazine.com/grand-amour/">Conhecer Grand Amour <span aria-hidden="true">↗</span></a></div></article>
+    </div><p class="m2-world-note">Artes de inspiração. Os produtos incluídos em cada kit estão descritos na respectiva página do produto.</p>
+  </div></section>
+
+  <section class="m2-wrap m2-section" aria-labelledby="m2-steps-title"><span class="m2-kicker">Simples, do seu jeito</span><h2 id="m2-steps-title" style="margin-top:14px">Da escolha ao<br><em>seu momento.</em></h2><ol class="m2-steps"><li><span class="m2-step-number" aria-hidden="true">01</span><h3>Encontre seu favorito</h3><p>Explore os kits e abra a página do que mais combina com você.</p></li><li><span class="m2-step-number" aria-hidden="true">02</span><h3>Confira os detalhes</h3><p>Veja os itens incluídos, as opções e o preço atual antes de adicionar ao carrinho.</p></li><li><span class="m2-step-number" aria-hidden="true">03</span><h3>Finalize na MKC</h3><p>Informe seu CEP, consulte a entrega e escolha a forma de pagamento disponível.</p></li></ol></section>
+
+  <section class="m2-wrap m2-section m2-faq" id="m2-duvidas" aria-labelledby="m2-faq-title">
+    <div class="m2-faq-intro"><span class="m2-kicker">Antes de escolher</span><h2 id="m2-faq-title">Um pouco mais<br><em>de clareza.</em></h2><p>As respostas para você escolher com calma e comprar na loja oficial.</p></div>
+    <div class="m2-questions">
+      <details><summary>É uma compra avulsa ou assinatura?</summary><div class="m2-answer">É uma compra avulsa. Você escolhe seu kit e faz o pedido, sem mensalidade ou renovação automática.</div></details>
+      <details><summary>O que vem na Necessaire da Beleza?</summary><div class="m2-answer">O kit é anunciado com 15 a 20 itens. Confira a composição e as condições atuais na <a href="https://mkcmagazine.com/produtos/kit-necessaire-da-beleza-completa-15-a-20-itens-1rglv/">página do produto</a> antes de comprar.</div></details>
+      <details><summary>As artes mostram o conteúdo de cada kit?</summary><div class="m2-answer">As artes de maquiagem e cuidados são inspirações da campanha. Os itens incluídos são os informados na página de cada kit. A galeria da Necessaire utiliza fotos do cadastro do produto.</div></details>
+      <details><summary>Posso escolher as cores ou os itens?</summary><div class="m2-answer">Veja as opções disponíveis na página do kit. Se não houver opção de escolha, consulte a loja antes de concluir o pedido.</div></details>
+      <details><summary>Como consulto o frete e o prazo?</summary><div class="m2-answer">Informe seu CEP na página do produto ou durante a compra para consultar as opções de entrega disponíveis para seu endereço.</div></details>
+      <details><summary>Quais formas de pagamento posso usar?</summary><div class="m2-answer">As opções e condições para seu pedido aparecem na finalização da compra. Confira os valores, descontos aplicáveis e o total antes de confirmar.</div></details>
+    </div>
+  </section>
+
+  <section class="m2-wrap m2-final" aria-labelledby="m2-final-title"><div><span class="m2-kicker">Seu momento de beleza</span><h2 id="m2-final-title">Seu próximo favorito<br><em>pode estar aqui.</em></h2><p>Conheça a Necessaire da Beleza e confira todos os detalhes na MKC Magazine.</p></div><div class="m2-final-actions"><a class="m2-btn" href="https://mkcmagazine.com/produtos/kit-necessaire-da-beleza-completa-15-a-20-itens-1rglv/">Quero conhecer a Necessaire <span aria-hidden="true">↗</span></a><a class="m2-link" href="#m2-outros-kits">Rever os outros kits <span aria-hidden="true">↑</span></a></div></section>
+
+  <footer class="m2-footer"><div class="m2-wrap"><div class="m2-footer-top"><a href="https://mkcmagazine.com/" aria-label="Ir para a loja MKC Magazine"><img class="m2-logo" src="https://dcdn-us.mitiendanube.com/stores/005/802/149/themes/common/logo-301507828-1747233216-0eacdc1456f7d0d6004ecb135cddae581747233216-320-0.webp" alt="MKC Magazine" width="88" height="56" loading="lazy"></a><nav class="m2-footer-links" aria-label="Informações da loja"><a href="https://mkcmagazine.com/como-comprar/">Como comprar</a><a href="https://mkcmagazine.com/trocas-e-devolucoes/">Trocas e devoluções</a><a href="https://mkcmagazine.com/contato/">Contato</a><a href="https://mkcmagazine.com/politica-de-privacidade/">Privacidade</a><a href="https://mkcmagazine.com/termos-de-uso/">Termos de uso</a></nav></div><p class="m2-legal">MKC Magazine Ltda · CNPJ: 50.293.640/0001-05<br>Rua Professor Toledo, 387 · Centro · Sorocaba/SP · CEP 18035-110<br>Compra, pagamento e entrega realizados pela loja oficial MKC Magazine.</p></div></footer>
+
+  <dialog class="m2-dialog" aria-labelledby="m2-photo-title"><div class="m2-dialog-head"><h2 id="m2-photo-title">Necessaire da Beleza · Foto ampliada</h2><button class="m2-close" type="button">Fechar ×</button></div><img alt="Foto ampliada da Necessaire da Beleza"></dialog>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('mkc-kits-clean');
+  if (!root) return;
+  var initialized = window.__mkcCleanCampaignRoots || (window.__mkcCleanCampaignRoots = new WeakSet());
+  if (initialized.has(root)) return;
+  initialized.add(root);
+
+  root.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href^="#"]');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var target = root.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+  });
+
+  var mainPhoto = root.querySelector('#m2-main-photo');
+  var zoomLink = root.querySelector('[data-mkc-zoom]');
+  var thumbs = Array.from(root.querySelectorAll('[data-mkc-photo]'));
+  thumbs.forEach(function (button, index) {
+    button.addEventListener('click', function () {
+      var image = button.querySelector('img');
+      var large = image.src.replace('-640-0.webp', '-1024-1024.webp');
+      mainPhoto.src = large;
+      mainPhoto.alt = 'Foto real ' + (index + 1) + ' da Necessaire da Beleza';
+      zoomLink.href = large;
+      thumbs.forEach(function (thumb) { thumb.setAttribute('aria-pressed', thumb === button ? 'true' : 'false'); });
+    });
+  });
+  var dialog = root.querySelector('.m2-dialog');
+  var enlarged = dialog.querySelector('img');
+  zoomLink.addEventListener('click', function (event) {
+    if (typeof dialog.showModal !== 'function' || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    enlarged.src = zoomLink.href;
+    enlarged.alt = mainPhoto.alt;
+    if (!dialog.open) dialog.showModal();
+  });
+  dialog.querySelector('.m2-close').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (event) {
+    if (event.target !== dialog) return;
+    var box = dialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+  });
+
+  var track = root.querySelector('.m2-track');
+  var previous = root.querySelector('[data-mkc-prev]');
+  var next = root.querySelector('[data-mkc-next]');
+  var controls = root.querySelector('.m2-controls');
+  var dots = root.querySelector('.m2-dots');
+  var active = 0, count = 0, frame = 0;
+  function step() { return track.children[1].offsetLeft - track.children[0].offsetLeft; }
+  function go(index) {
+    track.scrollTo({ left: step() * index, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
+  function update() {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(function () {
+      var last = Math.max(0, track.scrollWidth - track.clientWidth);
+      var pages = Math.max(1, Math.ceil(last / Math.max(1, step())) + 1);
+      controls.hidden = last <= 3;
+      dots.hidden = last <= 3;
+      previous.disabled = track.scrollLeft <= 3;
+      next.disabled = track.scrollLeft >= last - 3;
+      active = next.disabled ? pages - 1 : Math.round(track.scrollLeft / Math.max(1, step()));
+      if (count !== pages) {
+        count = pages;
+        dots.replaceChildren();
+        for (var i = 0; i < count; i++) {
+          (function (index) {
+            var button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('aria-label', 'Ir para a posição ' + (index + 1) + ' dos kits');
+            button.addEventListener('click', function () { go(index); });
+            dots.appendChild(button);
+          })(i);
+        }
+      }
+      Array.from(dots.children).forEach(function (button, index) {
+        if (index === active) button.setAttribute('aria-current', 'true');
+        else button.removeAttribute('aria-current');
+      });
+    });
+  }
+  previous.addEventListener('click', function () { go(active - 1); });
+  next.addEventListener('click', function () { go(active + 1); });
+  track.addEventListener('scroll', update, { passive: true });
+  if (window.ResizeObserver) new ResizeObserver(update).observe(track);
+  else window.addEventListener('resize', update);
+  update();
+
+  /* Consulta apenas as páginas públicas da própria loja; mantém referências se falhar. */
+  if (['mkcmagazine.com', 'www.mkcmagazine.com'].indexOf(location.hostname) !== -1 && window.IntersectionObserver) {
+    var format = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    async function refreshProduct(card) {
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); }, 7000);
+      try {
+        var path = new URL(card.dataset.mkcProduct).pathname;
+        var response = await fetch(path, { credentials: 'omit', cache: 'no-store', signal: controller.signal });
+        if (!response.ok) return;
+        var doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        var source = doc.querySelector('#product_form');
+        var display = doc.querySelector('#price_display[data-product-price]');
+        var identity = doc.querySelector('link[rel="canonical"]');
+        if (!source || !display || !identity || new URL(identity.href, location.origin).pathname !== path) return;
+        var raw = display.getAttribute('data-product-price');
+        if (!/^\d+$/.test(raw || '') || !Number.isSafeInteger(Number(raw))) return;
+        card.querySelector('[data-mkc-price]').textContent = format.format(Number(raw) / 100);
+        var note = card.querySelector('[data-mkc-price-note]');
+        if (note) note.textContent = 'Preço consultado na loja';
+        var pix = card.querySelector('[data-mkc-pix]');
+        if (pix) {
+          var pixSource = doc.querySelector('.js-payment-discount-price-product[data-priceraw-without-shipping]');
+          var method = doc.querySelector('.js-payment-discount-name-product');
+          var value = pixSource && pixSource.getAttribute('data-priceraw-without-shipping');
+          if (method && /pix/i.test(method.textContent) && /^\d+$/.test(value || '')) {
+            pix.textContent = format.format(Number(value) / 100) + ' com Pix';
+            pix.hidden = false;
+          } else pix.hidden = true;
+        }
+        var buy = source.querySelector('[data-store="product-buy-button"]');
+        if (buy && (buy.disabled || /esgotado|indisponível|sem estoque/i.test(buy.value || ''))) {
+          var cta = card.querySelector('[data-mkc-buy]');
+          if (cta) cta.textContent = 'Consultar disponibilidade ↗';
+        }
+      } catch (error) {
+        /* Sem bloquear navegação ou inventar confirmação de preço/estoque. */
+      } finally { clearTimeout(timer); }
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { observer.unobserve(entry.target); refreshProduct(entry.target); }
+      });
+    }, { rootMargin: '150px' });
+    root.querySelectorAll('[data-mkc-product]').forEach(function (card) { observer.observe(card); });
+  }
+})();
+</script>
