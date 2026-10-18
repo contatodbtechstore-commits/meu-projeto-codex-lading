@@ -1,0 +1,20 @@
+<!-- Grand Amour — kits aprovados. Acrescente abaixo dos códigos atuais. -->
+<script>
+(function () {
+  var id = 'ga-kits-runtime-v1';
+  var anterior = document.getElementById(id);
+  if (anterior && !anterior.dataset.gaFailed) {
+    window.dispatchEvent(new Event('ga:kits:mount'));
+    return;
+  }
+  if (anterior) anterior.remove();
+  var script = document.createElement('script');
+  script.id = id;
+  script.src = 'https://cdn.jsdelivr.net/gh/contatodbtechstore-commits/meu-projeto-codex-lading@ga-kits-v1.0.0/public/nuvemshop/grand-amour-kits-v1.js';
+  script.integrity = 'sha384-PA6INaWN+tw9DE4yN3x6uUc5CVB99HsM8W2mTAn2HJ5/JZKkJm695nj8CF1Aoffb';
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  script.onerror = function () { script.dataset.gaFailed = 'true'; };
+  document.head.appendChild(script);
+})();
+</script>

@@ -1,5 +1,15 @@
 # Grand Amour na Nuvemshop — instalação
 
+## Adicionar os kits aprovados à página já instalada
+
+Na mesma seção **Personalizada → Código** da Grand Amour, acrescente `07-kits-grand-amour.html` ao final do campo, depois dos códigos atuais. Não substitua o instalador original e não remova os ajustes anteriores. O trecho tem menos de 1.000 caracteres; carrega a seção aprovada por um arquivo público separado, com versão fixa e integridade SHA-384.
+
+O complemento posiciona o banner e o carrossel depois dos cinco produtos, dentro do mesmo Shadow DOM. Não exige reposicionar blocos. “Adquira já o seu” solicita uma unidade e inicia o checkout nativo; o botão de carrinho solicita uma unidade e mantém a pessoa na página, com link para conferir o carrinho. Os valores dos cards são referências e as condições definitivas são as da MKC. Depois de salvar/publicar, testar pelo link da loja fora do editor, sem precisar concluir pagamento.
+
+Para gerar a distribuição: `npm run build:kits-addon`. A versão `ga-kits-v1.0.0` é separada de `ga-nuvemshop-v1.0.0`; não sobrescrever as tags ou o bundle principal. Mais detalhes em [PREVIA-KITS.md](../../PREVIA-KITS.md).
+
+## Instalação inicial (histórico)
+
 Preparado para o modelo de página exclusivo Grand Amour, no Ipanema. Usa um único bloco HTML/CSS/JS, com 3.547 caracteres, abaixo do limite de 50.000. O layout React aprovado é compilado em um módulo separado. Não usa iframe, não muda DNS e não requer FTP ou credenciais de API.
 
 ## Instalação na prévia

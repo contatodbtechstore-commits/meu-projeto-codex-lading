@@ -1,6 +1,6 @@
 # Prévia dos kits Grand Amour
 
-A seção `#kits-grand-amour` entra depois dos cinco produtos e antes dos benefícios na página independente de prévia. Não foi acrescentada ao bundle imutável `ga-nuvemshop-v1.0.0` nem à página publicada na Nuvemshop. O código de instalação será preparado depois da aprovação visual.
+A seção `#kits-grand-amour` entra depois dos cinco produtos e antes dos benefícios. Após a aprovação da prévia pela usuária, foi preparado o complemento independente `ga-kits-v1.0.0`, instalado por `integration/nuvemshop/07-kits-grand-amour.html`. O bundle original imutável `ga-nuvemshop-v1.0.0` permanece intacto. A colagem e publicação no painel da Nuvemshop são feitas pela usuária.
 
 ## Conteúdo
 
@@ -31,3 +31,13 @@ Os valores promocionais vieram de `#price_display[data-product-price]`, em centa
 Os testes novos verificam posicionamento da seção, controles e limites em 320/390/768/1440px, os quatro destinos e IDs, envio de uma unidade, teclado e acessibilidade automática. As capas remotas precisam de acesso a `dcdn-us.mitiendanube.com`; o teste geral de carregamento de imagens não passa se esse domínio estiver bloqueado no ambiente.
 
 Os arquivos novos são `src/rituals.ts`, `src/components/RitualKits.tsx`, `src/components/ritual-kits.css` e `tests/ritual-kits.spec.ts`. O ponto de inserção fica em `src/App.tsx`.
+
+## Complemento para a Nuvemshop
+
+`npm run build:kits-addon` compila somente o complemento, sem apagar nem reconstruir o bundle original. Os dados e o CSS são compartilhados com a prévia aprovada. A implementação DOM de `src/integration/ritual-kits-addon.ts` insere a seção dentro do Shadow DOM, depois de `#kits`, e aguarda a renderização original quando necessário. Não altera a página inicial ou outras páginas da loja.
+
+O botão principal, na própria MKC, solicita adicionar uma unidade e depois inicia a finalização nativa em um POST separado. O carrinho solicita apenas a adição e oferece “Ver carrinho”, permanecendo na landing. Ambos validam o formulário atual, ID, opções e estado do botão de compra. O bloqueio de cliques simultâneos é compartilhado com o código dos cinco produtos. Falhas, variantes ou indisponibilidade permitem consultar o kit na página nativa, sem confirmar falsamente uma adição.
+
+O instalador curto carrega um arquivo público versionado, com integridade SHA-384 e CORS. Cole-o no final do campo de código existente. Não mover a tag depois de publicada. Para qualquer alteração no arquivo distribuído, gerar nova versão, novo hash e novo instalador.
+
+`tests/kits-addon.spec.ts` usa o bundle original e os ajustes anteriores para verificar os quatro tamanhos de tela, convivência com os cinco produtos, carregamento antecipado, repetição do instalador, recriação do host no editor, carrinhos, início do checkout dos quatro kits, indisponibilidade/variantes/ID divergente, falha de rede, teclado e acessibilidade. As operações de carrinho e checkout são interceptadas: não criam pedidos ou modificam carrinhos reais. Confirmar os fluxos na página publicada, fora do editor.
