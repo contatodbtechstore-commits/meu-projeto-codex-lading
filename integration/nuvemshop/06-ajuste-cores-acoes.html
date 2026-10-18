@@ -1,0 +1,73 @@
+<script>
+(function () {
+  function ajustarBotoes() {
+    var pagina = document.getElementById('ga-nuvemshop-page');
+    var raiz = pagina && pagina.shadowRoot;
+    if (!raiz) return;
+    var estilo = raiz.querySelector('#ga-ajuste-cores-acoes');
+    if (!estilo) {
+      estilo = document.createElement('style');
+      estilo.id = 'ga-ajuste-cores-acoes';
+      raiz.appendChild(estilo);
+    }
+    estilo.textContent = `
+      :host .button.button-header {
+        background: transparent !important;
+        border: 1px solid #D9B5C0 !important;
+        color: #4B1F3C !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+      }
+      :host .hero-actions .text-button {
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: #4B1F3C !important;
+        padding: 13px 0 !important;
+        text-decoration: underline !important;
+        text-decoration-thickness: 1px !important;
+        text-underline-offset: 6px !important;
+      }
+      :host .hero-actions .text-button::after {
+        display: none !important;
+      }
+      :host .hero-actions .button-primary,
+      :host .editorial-copy .text-button {
+        background: #F27186 !important;
+        border: 1px solid #F27186 !important;
+        color: #4B1F3C !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+      }
+      :host .final-banner .button.button-light {
+        background: #FFF8FA !important;
+        border: 1px solid #FBE0E6 !important;
+        color: #4B1F3C !important;
+        border-radius: 8px !important;
+        box-shadow: 0 5px 18px rgba(75,31,60,.10) !important;
+      }
+      @media (hover: hover) {
+        :host .button.button-header:hover {
+          background: #FFF8FA !important;
+        }
+        :host .hero-actions .text-button:hover {
+          background: transparent !important;
+          color: #AE3156 !important;
+        }
+        :host .hero-actions .button-primary:hover,
+        :host .editorial-copy .text-button:hover {
+          background: #F58A9C !important;
+          border-color: #F58A9C !important;
+        }
+        :host .final-banner .button.button-light:hover {
+          background: #FFFFFF !important;
+          border-color: #FFFFFF !important;
+        }
+      }
+    `;
+  }
+  ajustarBotoes();
+  document.addEventListener('ga:ready', ajustarBotoes);
+})();
+</script>
