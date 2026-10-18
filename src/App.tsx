@@ -21,6 +21,7 @@ import { useMotionPreference } from "./hooks/useMotionPreference";
 import { Brand, Bloom } from "./components/Brand";
 import { Reveal } from "./components/Reveal";
 import { KitCollection } from "./components/KitCollection";
+import { RitualKits } from "./components/RitualKits";
 import { KitDialog } from "./components/KitDialog";
 import { brand, catalog, faqs, kits, visuals, type Kit } from "./content";
 import { getPublishedKits, photoStyle } from "./utils/commerce";
@@ -339,6 +340,7 @@ function App({ scope = document, products = kits, questions = faqs, storeHomeUrl
             </p>
           </div>
         </section>
+        {scope === document && <RitualKits />}
         <section id="beneficios" className="section benefits-section">
           <div className="container">
             <Reveal className="center-heading">

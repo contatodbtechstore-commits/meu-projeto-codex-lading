@@ -1,5 +1,7 @@
 # Aura Bloom Beauty
 
+A marca atual da página é **Grand Amour**. A nova seção de kits da prévia está documentada em [PREVIA-KITS.md](PREVIA-KITS.md); suas capas usam o CDN original da MKC e exigem acesso externo a `dcdn-us.mitiendanube.com` durante a verificação de imagens.
+
 Landing page de cosméticos em português brasileiro, com React, TypeScript, Vite, Tailwind CSS 4, Motion e Lucide React. Layout editorial responsivo, fontes hospedadas localmente, mockups vetoriais originais e navegação por âncoras. A vitrine assimétrica dá destaque ao Kit Premium e usa composições próprias para Glow e Essencial. O hero combina tipografia expressiva, texturas suaves e produtos em camadas; a seção da marca explora um recorte de campanha em close.
 
 ## Executar
