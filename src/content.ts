@@ -63,7 +63,7 @@ export const content = {
     paymentInfo: null,
     checkoutUrl: null,
     availability: null
-  } satisfies Kit,
+  } as Kit,
   benefits: [
     { icon: "sparkles", title: "Beleza sem complicação", description: "Uma forma simples de organizar seu momento de cuidado." },
     { icon: "heart", title: "Um tempo só seu", description: "Transforme pequenos instantes em pausas especiais." },
